@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import "./App.css";
+import POSSystem from "../src/Container/POS-Systems/POS-System";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <p>Insert Component!</p>
+        <POSSystem />
       </div>
     );
   }
