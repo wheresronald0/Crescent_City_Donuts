@@ -41,7 +41,9 @@ class OrderEntry extends Component {
           <a href="/">
             <button>Enter or Lookup Customer</button>
           </a>
-          <button>Order Summary</button>
+          <a href="/order-summary">
+            <button>Order Summary</button>
+          </a>
           <button>Clear Order</button>
         </section>
       </div>
