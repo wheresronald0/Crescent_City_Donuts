@@ -1,0 +1,9 @@
+.greyDonutContainer {
+  height: 100px;
+  width: 100px;
+}
+
+.greyDonutImage {
+  height: 100%;
+  opacity: 0.5;
+}

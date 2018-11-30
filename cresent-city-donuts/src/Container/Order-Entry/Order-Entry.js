@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Donut from "../../Components/Donut/Donut";
 import "./Order-Entry.css";
+import ItemCount from "../../Components/Item-Count/Item-Count";
+import DonutBoxCount from "../../Components/Donut-Box-Count/Donut-Box-Count";
 
 class OrderEntry extends Component {
   constructor(props) {
@@ -8,14 +10,14 @@ class OrderEntry extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="orderContainer">
         <h1>New Order for: insert name from db</h1>
-        <div>
-          <h3>Number of Donuts</h3>
+        <section>
+          <h3>Number of Donuts:</h3>
           <button>Single</button>
           <button>Half-Dozen</button>
           <button>Dozen</button>
-        </div>
+        </section>
         <section className="donutThumbnails">
           <Donut />
           <Donut />
@@ -23,9 +25,25 @@ class OrderEntry extends Component {
           <Donut />
           <Donut />
         </section>
-        <a href="/">
-          <button>Enter or Lookup Customer</button>
-        </a>
+        <section className="countContainer">
+          <ItemCount />
+
+          <DonutBoxCount />
+          <DonutBoxCount />
+          <DonutBoxCount />
+          <DonutBoxCount />
+          <DonutBoxCount />
+          <DonutBoxCount />
+          <DonutBoxCount />
+        </section>
+
+        <section>
+          <a href="/">
+            <button>Enter or Lookup Customer</button>
+          </a>
+          <button>Order Summary</button>
+          <button>Clear Order</button>
+        </section>
       </div>
     );
   }

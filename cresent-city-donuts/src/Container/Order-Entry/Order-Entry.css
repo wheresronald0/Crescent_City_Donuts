@@ -1,4 +1,14 @@
+.orderContainer {
+  margin-left: 40px;
+}
+
 .donutThumbnails {
   display: flex;
   flex-direction: row;
+}
+
+.countContainer {
+  display: flex;
+  flex-direction: row;
+  height: 300px;
 }
