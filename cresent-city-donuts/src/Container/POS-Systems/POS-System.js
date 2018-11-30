@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import NavBar from "../../Components/Nav-Bar/Nav-Bar";
-import CustomerSelect from "../../Components/Customer-Select/Customer-Select";
+import NewOrder from "../../Components/New-Order/New-Order";
 import CustomerDataSearch from "../Customer-Data-Search/Customer-Data-Search";
+import NewCustomerData from "../New-Customer-Data/New-Customer-Data";
+import OrderEntry from "../Order-Entry/Order-Entry";
 
 class POSSystem extends Component {
   constructor(props) {
@@ -13,8 +15,10 @@ class POSSystem extends Component {
       <div>
         <NavBar />
         <Switch>
-          <Route path="/" component={CustomerSelect} />
           <Route path="/customer-data-search" component={CustomerDataSearch} />
+          <Route path="/new-customer-data" component={NewCustomerData} />
+          <Route path="/order-entry" component={OrderEntry} />
+          <Route path="/" component={NewOrder} />
         </Switch>
       </div>
     );

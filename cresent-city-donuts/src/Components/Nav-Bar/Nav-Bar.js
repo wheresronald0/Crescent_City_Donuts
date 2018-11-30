@@ -7,12 +7,12 @@ const navBar = props => {
   return (
     <div className="mainContainer">
       <div className="logoContainer">
-        <img className="logoImage" src={Logo} />
+        <img className="logoImage" src={Logo} alt="Flor de lis" />
         <h1 className="nameFont">Cresent City</h1>
         <h1 className="donutFont">Donuts</h1>
       </div>
       <div>
-        <img className="posImage" src={POS} />
+        <img className="posImage" src={POS} alt="POS Vendor Company Logo" />
       </div>
     </div>
   );

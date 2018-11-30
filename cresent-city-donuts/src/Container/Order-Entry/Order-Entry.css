@@ -1,0 +1,4 @@
+.donutThumbnails {
+  display: flex;
+  flex-direction: row;
+}

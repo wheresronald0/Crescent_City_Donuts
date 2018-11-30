@@ -10,7 +10,11 @@ class CustomerDataSearch extends Component {
         <form>
           <lable>Enter Customer Name</lable>
           <input type="text" />
+          <button>Search</button>
         </form>
+        <a href="/">
+          <button>Back</button>
+        </a>
       </div>
     );
   }
