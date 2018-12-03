@@ -20,17 +20,17 @@
 .posImage {
   height: 60px;
   border-radius: 10px;
-  margin: 20px 40px 0 0;
+  margin: 10px 40px 10px 0;
 }
 
 .nameFont {
   font-family: "Merienda", cursive;
-  font-size: 2.2em;
+  font-size: 36px;
   color: rgb(255, 205, 40);
 }
 
 .donutFont {
   font-family: "Chango", cursive;
-  margin: 0 0 0 17px;
-  font-size: 2.2em;
+  margin: 10px 0 0 17px;
+  font-size: 33px;
 }

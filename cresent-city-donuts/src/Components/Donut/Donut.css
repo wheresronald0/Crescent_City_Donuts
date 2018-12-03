@@ -1,15 +1,29 @@
 .donutContainer {
   margin: 10px 10px;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
+  width: 200px;
+  border: 0px solid rgb(209, 209, 209);
+  border-radius: 5px;
+  box-shadow: 0 1px 6px 0px blueviolet;
+}
+.donutWrapper {
+  display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  height: 100px;
-  width: 150px;
-  border: 1px solid black;
-  border-radius: 10px;
 }
 
 .donutImage {
   height: 100%;
+  width: 50%;
+}
+
+.itemIncrement {
+  margin: 3px 3px;
+  border-radius: 50px;
+  box-shadow: 0 1px 3px 0 grey;
 }

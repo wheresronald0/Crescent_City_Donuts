@@ -1,4 +1,12 @@
 import React, { Component } from "react";
+import "./Customer-Data-Search.css";
+import {
+  Form,
+  FormGroup,
+  Button,
+  ControlLabel,
+  FormControl
+} from "react-bootstrap";
 
 class CustomerDataSearch extends Component {
   constructor(props) {
@@ -6,15 +14,20 @@ class CustomerDataSearch extends Component {
   }
   render() {
     return (
-      <div>
-        <form>
-          <lable>Enter Customer Name</lable>
-          <input type="text" />
-          <button>Search</button>
-        </form>
-        <a href="/">
-          <button>Back</button>
-        </a>
+      <div className="formContainer">
+        <Form inline>
+          <FormGroup controlId="formInlineName">
+            <ControlLabel>Customer Lookup by Name</ControlLabel>{" "}
+            <FormControl type="text" placeholder="Jane Doe" />
+          </FormGroup>{" "}
+          <Button bsStyle="warning" type="submit">
+            Search for Customer
+          </Button>
+          <Button href="/" bsStyle="warning" type="submit">
+            Back
+          </Button>
+        </Form>
+        <hr />
       </div>
     );
   }
