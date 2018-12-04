@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import * as actions from "../../store/actions";
 
 import Donut from "../../Components/Donut/Donut";
-import "./Order-Entry.css";
 import ItemCount from "../../Components/Item-Count/Item-Count";
 import DonutBoxCount from "../../Components/Donut-Box-Count/Donut-Box-Count";
 import CounterOutput from "../../Components/Counter-Output/Counter-Output";
-
-import { Button } from "react-bootstrap";
 import OrderSummary from "../../Components/Order-Summary/Order-Summary";
+
+import "./Order-Entry.css";
+import { Button } from "react-bootstrap";
 
 class OrderEntry extends Component {
   constructor(props) {
@@ -68,16 +69,19 @@ class OrderEntry extends Component {
 
 const mapStateToProps = state => {
   return {
-    counterFromReducerState: state.counter
+    //accessing global state after combining reducers in index.js
+    counterFromReducerState: state.total.totalDonutCounter
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onClearCounter: () => dispatch({ type: "CLEAR_COUNTER" }),
-    onIncrementOneCounter: () => dispatch({ type: "INCREMENT_ONE" }),
-    onIncrementSixCounter: () => dispatch({ type: "INCREMENT_SIX" }),
-    onIncrementTwelveCounter: () => dispatch({ type: "INCREMENT_TWELVE" })
+    onClearCounter: () => dispatch({ type: actions.CLEAR_COUNTER }),
+    onIncrementOneCounter: () => dispatch({ type: actions.INCREMENT_ONE }),
+    onIncrementSixCounter: () => dispatch({ type: actions.INCREMENT_SIX }),
+    onIncrementTwelveCounter: () =>
+      dispatch({ type: actions.INCREMENT_TWELVE }),
+    onIncrementDonutCounter: () => dispatch({ type: actions.INCREMENT_DONUT })
   };
 };
 

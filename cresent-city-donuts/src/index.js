@@ -1,14 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { createStore } from "redux";
+import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
 
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import Reducer from "./Store/Reducer";
 
-const store = createStore(Reducer);
+import totalCountReducer from "./store/reducers/total-count-reducer";
+import individualCountReducer from "./store/reducers/individual-count-reducer";
+
+const rootReducer = combineReducers({
+  total: totalCountReducer,
+  individual: individualCountReducer
+});
+const store = createStore(rootReducer);
 
 ReactDOM.render(
   <Provider store={store}>
