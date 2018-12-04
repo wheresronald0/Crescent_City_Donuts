@@ -81,6 +81,14 @@ class NewCustomerData extends Component {
               onChange={event => this.setState({ zip: event.target.value })}
             />
           </FormGroup>
+          <FormGroup>
+            <ControlLabel>Email</ControlLabel>
+            <FormControl
+              type="text"
+              placeholder="japple@gmail.com"
+              onChange={event => this.setState({ email: event.target.value })}
+            />
+          </FormGroup>
           <Button onClick={this.customerDataHandler}>Submit Customer</Button>
         </Form>
         <a href="/">
