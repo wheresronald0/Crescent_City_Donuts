@@ -1,5 +1,6 @@
 //total count actions
 export const CLEAR_COUNTER = "CLEAR_COUNTER";
+// export const PLACEDHOLDER_COUNTER = "PLACEDHOLDER_COUNTER";
 export const INCREMENT_ONE = "INCREMENT_ONE";
 export const INCREMENT_SIX = "INCREMENT_SIX";
 export const INCREMENT_TWELVE = "INCREMENT_TWELVE";

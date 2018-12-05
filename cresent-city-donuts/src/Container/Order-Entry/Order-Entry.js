@@ -20,24 +20,27 @@ class OrderEntry extends Component {
   render() {
     //loops greyed-out placeholder donuts as a visual representation corresponding with total donuts ordered count
     const donutPlaceholder = [];
-    const placeholderCnt = this.props.counterFromReducerState;
+    const placeholderCnt = this.props.placeholderCounter;
     for (let i = 0; i < placeholderCnt; i++) {
       donutPlaceholder.push(<DonutPlaceholder key={i} />);
     }
 
     //loops donuts as a visual representation as a replacement for a greyed-out placeholder
+
     const donut = [];
     const donutCnt = this.props.sugarGlazedCount;
     for (let j = 0; j < donutCnt; j++) {
       donut.push(<Donut key={j} />);
     }
-
+    //displays individual count (can delete)
     const numTest = this.props.sugarGlazedCount;
+    console.log("placeholder", this.props.placeholderCounter);
+    console.log("individual", this.props.individualCounter);
     return (
       <div className="orderContainer">
         <h2>New Order for: insert name from db</h2>
         <section className="orderAmount">
-          <h3>Number of Donuts for Order</h3>
+          <h3>Enter Number of Donuts for Order</h3>
           <Button bsStyle="warning" onClick={this.props.onIncrementOneCounter}>
             Single
           </Button>
@@ -84,9 +87,10 @@ class OrderEntry extends Component {
 
 const mapStateToProps = state => {
   return {
-    //accessing global state after combining reducers in index.js
-    counterFromReducerState: state.total.totalDonutCounter,
-    sugarGlazedCount: state.individual.sugarGlazed
+    counterFromReducerState: state.totalDonutCounter,
+    placeholderCounter: state.placeholderCount,
+    individualCounter: state.individualCount,
+    sugarGlazedCount: state.sugarGlazed
   };
 };
 
@@ -94,6 +98,7 @@ const mapDispatchToProps = dispatch => {
   return {
     //total donut count actions:
     onClearCounter: () => dispatch({ type: actions.CLEAR_COUNTER }),
+    // onPlaceholderCount: () => dispatch({ type: actions.PLACEDHOLDER_COUNTER }),
     onIncrementOneCounter: () => dispatch({ type: actions.INCREMENT_ONE }),
     onIncrementSixCounter: () => dispatch({ type: actions.INCREMENT_SIX }),
     onIncrementTwelveCounter: () =>
