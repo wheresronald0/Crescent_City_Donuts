@@ -1,7 +1,7 @@
 import * as actions from "../actions";
 
 const initialState = {
-  sugarGalzed: 0,
+  sugarGlazed: 0,
   chocolate: 0,
   blueberry: 0,
   strawberry: 0,
@@ -10,9 +10,15 @@ const initialState = {
 
 const individualCountReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actions.INCREMENT_DONUT:
+    case actions.INCREMENT_SUGAR_GLAZED:
       return {
-        sugarGalzed: state.sugarGalzed + 1
+        ...state,
+        sugarGlazed: state.sugarGlazed + 1
+      };
+    case actions.DECREMENT_SUGAR_GLAZED:
+      return {
+        ...state,
+        sugarGlazed: state.sugarGlazed - 1
       };
   }
   return state;

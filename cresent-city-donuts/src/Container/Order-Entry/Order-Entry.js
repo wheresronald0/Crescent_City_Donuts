@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions";
 
-import Donut from "../../Components/Donut/Donut";
+import DonutOrderTile from "../../Components/Donut-Order-Tile/Donut-Order-Tile";
 import ItemCount from "../../Components/Item-Count/Item-Count";
-import DonutBoxCount from "../../Components/Donut-Box-Count/Donut-Box-Count";
+import Donut from "../../Components/Donut/Donut";
+import DonutPlaceholder from "../../Components/Donut-Placeholder/Donut-Placeholder";
 import CounterOutput from "../../Components/Counter-Output/Counter-Output";
 import OrderSummary from "../../Components/Order-Summary/Order-Summary";
 
@@ -15,7 +16,23 @@ class OrderEntry extends Component {
   constructor(props) {
     super(props);
   }
+
   render() {
+    //loops greyed-out placeholder donuts as a visual representation corresponding with total donuts ordered count
+    const donutPlaceholder = [];
+    const placeholderCnt = this.props.counterFromReducerState;
+    for (let i = 0; i < placeholderCnt; i++) {
+      donutPlaceholder.push(<DonutPlaceholder key={i} />);
+    }
+
+    //loops donuts as a visual representation as a replacement for a greyed-out placeholder
+    const donut = [];
+    const donutCnt = this.props.sugarGlazedCount;
+    for (let j = 0; j < donutCnt; j++) {
+      donut.push(<Donut key={j} />);
+    }
+
+    const numTest = this.props.sugarGlazedCount;
     return (
       <div className="orderContainer">
         <h2>New Order for: insert name from db</h2>
@@ -36,21 +53,19 @@ class OrderEntry extends Component {
           <Button bsStyle="danger" onClick={this.props.onClearCounter}>
             Reset
           </Button>
-          <CounterOutput count={this.props.counterFromReducerState} />
+          <CounterOutput totalCount={this.props.counterFromReducerState} />
         </section>
         <section className="donutThumbnails">
-          <Donut />
-          <Donut />
-          <Donut />
-          <Donut />
-          <Donut />
+          <DonutOrderTile
+            incrementDonut={this.props.onIncrementSugarGlazedCounter}
+            decrementDonut={this.props.onDecrementSugarGalzedCounter}
+          />
+          {numTest}
         </section>
         <section className="countContainer">
           <ItemCount />
-
-          <DonutBoxCount />
-          <DonutBoxCount />
-          <DonutBoxCount />
+          {donut}
+          {donutPlaceholder}
         </section>
 
         <section className="orderButtons">
@@ -70,18 +85,24 @@ class OrderEntry extends Component {
 const mapStateToProps = state => {
   return {
     //accessing global state after combining reducers in index.js
-    counterFromReducerState: state.total.totalDonutCounter
+    counterFromReducerState: state.total.totalDonutCounter,
+    sugarGlazedCount: state.individual.sugarGlazed
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
+    //total donut count actions:
     onClearCounter: () => dispatch({ type: actions.CLEAR_COUNTER }),
     onIncrementOneCounter: () => dispatch({ type: actions.INCREMENT_ONE }),
     onIncrementSixCounter: () => dispatch({ type: actions.INCREMENT_SIX }),
     onIncrementTwelveCounter: () =>
       dispatch({ type: actions.INCREMENT_TWELVE }),
-    onIncrementDonutCounter: () => dispatch({ type: actions.INCREMENT_DONUT })
+    //individual donut count actions:
+    onIncrementSugarGlazedCounter: () =>
+      dispatch({ type: actions.INCREMENT_SUGAR_GLAZED }),
+    onDecrementSugarGalzedCounter: () =>
+      dispatch({ type: actions.DECREMENT_SUGAR_GLAZED })
   };
 };
 

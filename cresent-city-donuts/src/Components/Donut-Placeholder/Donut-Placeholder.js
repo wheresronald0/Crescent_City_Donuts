@@ -1,8 +1,8 @@
 import React from "react";
 import greyedOutDonut from "../../Assests/grey-donut-top.png";
-import "./Donut-Box-Count.css";
+import "./Donut-Placeholder.css";
 
-const donutBoxCount = props => {
+const donutPlaceholder = props => {
   return (
     <div className="greyDonutContainer">
       <img
@@ -14,4 +14,4 @@ const donutBoxCount = props => {
   );
 };
 
-export default donutBoxCount;
+export default donutPlaceholder;
