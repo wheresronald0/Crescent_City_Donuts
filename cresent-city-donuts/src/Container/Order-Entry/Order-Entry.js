@@ -66,9 +66,14 @@ class OrderEntry extends Component {
           {numTest}
         </section>
         <section className="countContainer">
-          <ItemCount />
-          {donut}
-          {donutPlaceholder}
+          <div>
+            <ItemCount />
+          </div>
+
+          <div className="vitualDonutBox">
+            {donut}
+            {donutPlaceholder}
+          </div>
         </section>
 
         <section className="orderButtons">

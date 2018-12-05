@@ -45,13 +45,25 @@ const reducer = (state = initialState, action) => {
       };
 
     //individual donut actions
+    //glazed
     case actions.INCREMENT_SUGAR_GLAZED:
-      return {
-        ...state,
-        sugarGlazed: state.sugarGlazed + 1,
-        individualCount: state.individualCount + 1,
-        placeholderCount: state.placeholderCount - 1
-      };
+      if (state.individualCount < state.totalDonutCounter) {
+        return {
+          ...state,
+          sugarGlazed: state.sugarGlazed + 1,
+          individualCount: state.individualCount + 1,
+          placeholderCount: state.placeholderCount - 1
+        };
+      }
+      if (state.individualCount >= state.totalDonutCounter) {
+        return {
+          ...state,
+          sugarGlazed: state.sugarGlazed + 1,
+          individualCount: state.individualCount + 1,
+          placeholderCount: 0,
+          totalDonutCounter: state.totalDonutCounter + 1
+        };
+      }
     case actions.DECREMENT_SUGAR_GLAZED:
       if (state.individualCount > 0) {
         return {
