@@ -1,24 +1,24 @@
 import React from "react";
-import SugarGlazed from "../../Assests/sugar-glazed-side.jpeg";
+import confettiSideView from "../../Assests/confetti-side.jpeg";
 import "./Donut-Order-Tile.css";
 
 import { Button, Glyphicon } from "react-bootstrap";
 
-const donutOrderTile = props => {
+const confettiOrderTile = props => {
   return (
     <div className="donutTileContainer">
       <div className="donutTileWrapper">
         <Button className="itemIncrement" onClick={props.incrementDonut}>
           <Glyphicon glyph="plus" />
         </Button>
-        <img src={SugarGlazed} className="donutTileImage" alt="donut" />
+        <img src={confettiSideView} className="donutTileImage" alt="donut" />
         <Button className="itemIncrement" onClick={props.decrementDonut}>
           <Glyphicon glyph="minus" />
         </Button>
       </div>
-      <p>Sugar Glazed</p>
+      <p>Mardi Gras Confetti:</p>
     </div>
   );
 };
 
-export default donutOrderTile;
+export default confettiOrderTile;

@@ -2,9 +2,17 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions";
 
-import DonutOrderTile from "../../Components/Donut-Order-Tile/Donut-Order-Tile";
+import SugarGlazedOrderTile from "../../Components/Donut-Order-Tile/Sugar-Glazed-Order-Tile";
+import ChocolateOrderTile from "../../Components/Donut-Order-Tile/Chocolate-Order-Tile";
+import BlueberryOrderTile from "../../Components/Donut-Order-Tile/Blueberry-Order-Tile";
+import StrawberryOrderTile from "../../Components/Donut-Order-Tile/Strawberry-Order-Tile";
+import ConfettiOrderTile from "../../Components/Donut-Order-Tile/Confetti-Order-Tile";
 import ItemCount from "../../Components/Item-Count/Item-Count";
-import Donut from "../../Components/Donut/Donut";
+import SugarGlazedDonut from "../../Components/Donut/Sugar-Glazed-Donut";
+import ChocolateDonut from "../../Components/Donut/Chocolate-Donut";
+import BlueberryDonut from "../../Components/Donut/Blueberry-Donut";
+import StrawberryDonut from "../../Components/Donut/Strawberry-Donut";
+import ConfettiDonut from "../../Components/Donut/Confetti-Donut";
 import DonutPlaceholder from "../../Components/Donut-Placeholder/Donut-Placeholder";
 import CounterOutput from "../../Components/Counter-Output/Counter-Output";
 import OrderSummary from "../../Components/Order-Summary/Order-Summary";
@@ -25,17 +33,37 @@ class OrderEntry extends Component {
       donutPlaceholder.push(<DonutPlaceholder key={i} />);
     }
 
-    //loops donuts as a visual representation as a replacement for a greyed-out placeholder
-
-    const donut = [];
-    const donutCnt = this.props.sugarGlazedCount;
-    for (let j = 0; j < donutCnt; j++) {
-      donut.push(<Donut key={j} />);
+    //Displays top-view of donuts, and loops donuts as a visual representation as a replacement for a greyed-out placeholder
+    const sugarGlazedDonut = [];
+    const sugarGlazedDonutCnt = this.props.sugarGlazedCount;
+    for (let j = 0; j < sugarGlazedDonutCnt; j++) {
+      sugarGlazedDonut.push(<SugarGlazedDonut key={j} />);
+    }
+    const chocolateDonut = [];
+    const chocolateDonutCnt = this.props.chocolateCount;
+    for (let j = 0; j < chocolateDonutCnt; j++) {
+      chocolateDonut.push(<ChocolateDonut key={j} />);
+    }
+    const blueberryDonut = [];
+    const blueberryDonutCnt = this.props.blueberryCount;
+    for (let j = 0; j < blueberryDonutCnt; j++) {
+      blueberryDonut.push(<BlueberryDonut key={j} />);
+    }
+    const strawberryDonut = [];
+    const strawberryDonutCnt = this.props.strawberryCount;
+    for (let j = 0; j < strawberryDonutCnt; j++) {
+      strawberryDonut.push(<StrawberryDonut key={j} />);
+    }
+    const confettiDonut = [];
+    const confettiDonutCnt = this.props.confettiCount;
+    for (let j = 0; j < confettiDonutCnt; j++) {
+      confettiDonut.push(<ConfettiDonut key={j} />);
     }
     //displays individual count (can delete)
-    const numTest = this.props.sugarGlazedCount;
-    console.log("placeholder", this.props.placeholderCounter);
-    console.log("individual", this.props.individualCounter);
+    // console.log("placeholder", this.props.placeholderCounter);
+    // console.log("individual", this.props.individualCounter);
+    // console.log("sugar", this.props.sugarGlazedCount);
+    // console.log("chocolate", this.props.chocolateCount);
     return (
       <div className="orderContainer">
         <h2>New Order for: insert name from db</h2>
@@ -59,11 +87,26 @@ class OrderEntry extends Component {
           <CounterOutput totalCount={this.props.counterFromReducerState} />
         </section>
         <section className="donutThumbnails">
-          <DonutOrderTile
+          <SugarGlazedOrderTile
             incrementDonut={this.props.onIncrementSugarGlazedCounter}
             decrementDonut={this.props.onDecrementSugarGalzedCounter}
           />
-          {numTest}
+          <ChocolateOrderTile
+            incrementDonut={this.props.onIncrementChocolateCounter}
+            decrementDonut={this.props.onDecrementChocolateCounter}
+          />
+          <BlueberryOrderTile
+            incrementDonut={this.props.onIncrementBlueberryCounter}
+            decrementDonut={this.props.onDecrementBlueberryCounter}
+          />
+          <StrawberryOrderTile
+            incrementDonut={this.props.onIncrementStrawberryCounter}
+            decrementDonut={this.props.onDecrementStrawberryCounter}
+          />
+          <ConfettiOrderTile
+            incrementDonut={this.props.onIncrementConfettiCounter}
+            decrementDonut={this.props.onDecrementConfettiCounter}
+          />
         </section>
         <section className="countContainer">
           <div>
@@ -71,7 +114,11 @@ class OrderEntry extends Component {
           </div>
 
           <div className="vitualDonutBox">
-            {donut}
+            {sugarGlazedDonut}
+            {chocolateDonut}
+            {blueberryDonut}
+            {strawberryDonut}
+            {confettiDonut}
             {donutPlaceholder}
           </div>
         </section>
@@ -95,7 +142,11 @@ const mapStateToProps = state => {
     counterFromReducerState: state.totalDonutCounter,
     placeholderCounter: state.placeholderCount,
     individualCounter: state.individualCount,
-    sugarGlazedCount: state.sugarGlazed
+    sugarGlazedCount: state.sugarGlazed,
+    chocolateCount: state.chocolate,
+    blueberryCount: state.blueberry,
+    strawberryCount: state.strawberry,
+    confettiCount: state.confetti
   };
 };
 
@@ -103,7 +154,6 @@ const mapDispatchToProps = dispatch => {
   return {
     //total donut count actions:
     onClearCounter: () => dispatch({ type: actions.CLEAR_COUNTER }),
-    // onPlaceholderCount: () => dispatch({ type: actions.PLACEDHOLDER_COUNTER }),
     onIncrementOneCounter: () => dispatch({ type: actions.INCREMENT_ONE }),
     onIncrementSixCounter: () => dispatch({ type: actions.INCREMENT_SIX }),
     onIncrementTwelveCounter: () =>
@@ -112,7 +162,23 @@ const mapDispatchToProps = dispatch => {
     onIncrementSugarGlazedCounter: () =>
       dispatch({ type: actions.INCREMENT_SUGAR_GLAZED }),
     onDecrementSugarGalzedCounter: () =>
-      dispatch({ type: actions.DECREMENT_SUGAR_GLAZED })
+      dispatch({ type: actions.DECREMENT_SUGAR_GLAZED }),
+    onIncrementChocolateCounter: () =>
+      dispatch({ type: actions.INCREMENT_CHOCOLATE }),
+    onDecrementChocolateCounter: () =>
+      dispatch({ type: actions.DECREMENT_CHOCOLATE }),
+    onIncrementBlueberryCounter: () =>
+      dispatch({ type: actions.INCREMENT_BLUEBERRY }),
+    onDecrementBlueberryCounter: () =>
+      dispatch({ type: actions.DECREMENT_BLUEBERRY }),
+    onIncrementStrawberryCounter: () =>
+      dispatch({ type: actions.INCREMENT_STRAWBERRY }),
+    onDecrementStrawberryCounter: () =>
+      dispatch({ type: actions.DECREMENT_STRAWBERRY }),
+    onIncrementConfettiCounter: () =>
+      dispatch({ type: actions.INCREMENT_CONFETTI }),
+    onDecrementConfettiCounter: () =>
+      dispatch({ type: actions.DECREMENT_CONFETTI })
   };
 };
 

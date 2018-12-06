@@ -20,11 +20,6 @@ const reducer = (state = initialState, action) => {
         totalDonutCounter: 0,
         placeholderCount: 0
       };
-    // case actions.PLACEDHOLDER_COUNTER:
-    //   return {
-    //     ...state,
-    //     placeholderCount: state.placeholderCount - 1
-    //   };
     case actions.INCREMENT_ONE:
       return {
         ...state,
@@ -65,7 +60,7 @@ const reducer = (state = initialState, action) => {
         };
       }
     case actions.DECREMENT_SUGAR_GLAZED:
-      if (state.individualCount > 0) {
+      if (state.sugarGlazed > 0) {
         return {
           ...state,
           sugarGlazed: state.sugarGlazed - 1,
@@ -74,10 +69,161 @@ const reducer = (state = initialState, action) => {
         };
       }
       //ensures count doesn't go nagative
-      if (state.individualCount <= 0) {
+      if (state.sugarGlazed <= 0) {
         return {
           ...state,
           sugarGlazed: state.sugarGlazed,
+          individualCount: state.individualCount,
+          placeholderCount: state.placeholderCount
+        };
+      }
+
+    //chocolate
+    case actions.INCREMENT_CHOCOLATE:
+      if (state.individualCount < state.totalDonutCounter) {
+        return {
+          ...state,
+          chocolate: state.chocolate + 1,
+          individualCount: state.individualCount + 1,
+          placeholderCount: state.placeholderCount - 1
+        };
+      }
+      if (state.individualCount >= state.totalDonutCounter) {
+        return {
+          ...state,
+          chocolate: state.chocolate + 1,
+          individualCount: state.individualCount + 1,
+          placeholderCount: 0,
+          totalDonutCounter: state.totalDonutCounter + 1
+        };
+      }
+    case actions.DECREMENT_CHOCOLATE:
+      if (state.chocolate > 0) {
+        return {
+          ...state,
+          chocolate: state.chocolate - 1,
+          individualCount: state.individualCount - 1,
+          placeholderCount: state.placeholderCount + 1
+        };
+      }
+      //ensures count doesn't go nagative
+      if (state.chocolate <= 0) {
+        return {
+          ...state,
+          chocolate: state.chocolate,
+          individualCount: state.individualCount,
+          placeholderCount: state.placeholderCount
+        };
+      }
+    //chocolate
+    case actions.INCREMENT_BLUEBERRY:
+      if (state.individualCount < state.totalDonutCounter) {
+        return {
+          ...state,
+          blueberry: state.blueberry + 1,
+          individualCount: state.individualCount + 1,
+          placeholderCount: state.placeholderCount - 1
+        };
+      }
+      if (state.individualCount >= state.totalDonutCounter) {
+        return {
+          ...state,
+          blueberry: state.blueberry + 1,
+          individualCount: state.individualCount + 1,
+          placeholderCount: 0,
+          totalDonutCounter: state.totalDonutCounter + 1
+        };
+      }
+    case actions.DECREMENT_BLUEBERRY:
+      if (state.blueberry > 0) {
+        return {
+          ...state,
+          blueberry: state.blueberry - 1,
+          individualCount: state.individualCount - 1,
+          placeholderCount: state.placeholderCount + 1
+        };
+      }
+      //ensures count doesn't go nagative
+      if (state.blueberry <= 0) {
+        return {
+          ...state,
+          blueberry: state.blueberry,
+          individualCount: state.individualCount,
+          placeholderCount: state.placeholderCount
+        };
+      }
+
+    //strawberry
+    case actions.INCREMENT_STRAWBERRY:
+      if (state.individualCount < state.totalDonutCounter) {
+        return {
+          ...state,
+          strawberry: state.strawberry + 1,
+          individualCount: state.individualCount + 1,
+          placeholderCount: state.placeholderCount - 1
+        };
+      }
+      if (state.individualCount >= state.totalDonutCounter) {
+        return {
+          ...state,
+          strawberry: state.strawberry + 1,
+          individualCount: state.individualCount + 1,
+          placeholderCount: 0,
+          totalDonutCounter: state.totalDonutCounter + 1
+        };
+      }
+    case actions.DECREMENT_STRAWBERRY:
+      if (state.strawberry > 0) {
+        return {
+          ...state,
+          strawberry: state.strawberry - 1,
+          individualCount: state.individualCount - 1,
+          placeholderCount: state.placeholderCount + 1
+        };
+      }
+      //ensures count doesn't go nagative
+      if (state.strawberry <= 0) {
+        return {
+          ...state,
+          strawberry: state.strawberry,
+          individualCount: state.individualCount,
+          placeholderCount: state.placeholderCount
+        };
+      }
+
+    //confetti
+    case actions.INCREMENT_CONFETTI:
+      if (state.individualCount < state.totalDonutCounter) {
+        return {
+          ...state,
+          confetti: state.confetti + 1,
+          individualCount: state.individualCount + 1,
+          placeholderCount: state.placeholderCount - 1
+        };
+      }
+      if (state.individualCount >= state.totalDonutCounter) {
+        return {
+          ...state,
+          confetti: state.confetti + 1,
+          individualCount: state.individualCount + 1,
+          placeholderCount: 0,
+          totalDonutCounter: state.totalDonutCounter + 1
+        };
+      }
+    case actions.DECREMENT_CONFETTI:
+      if (state.confetti > 0) {
+        return {
+          ...state,
+          confetti: state.confetti - 1,
+          individualCount: state.individualCount - 1,
+          placeholderCount: state.placeholderCount + 1
+        };
+      }
+      //ensures count doesn't go nagative
+      if (state.confetti <= 0) {
+        return {
+          ...state,
+          confetti: state.confetti,
           individualCount: state.individualCount,
           placeholderCount: state.placeholderCount
         };

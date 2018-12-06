@@ -5,7 +5,7 @@ const itemCount = props => {
   return (
     <div>
       <p>Sugar Glazed:</p>
-      <p>Clasic Chocolate:</p>
+      <p>Classic Chocolate:</p>
       <p>Bayou Bluberry:</p>
       <p>St. Charles Strawberry:</p>
       <p>Mardi Gras Confetti:</p>
