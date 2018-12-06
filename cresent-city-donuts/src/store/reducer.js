@@ -1,19 +1,41 @@
 import * as actions from "./actions";
+import CustomerDataSearch from "../Container/Customer-Data-Search/Customer-Data-Search";
 
 const initialState = {
-  totalDonutCounter: 0,
+  totalDonutCounter: 1,
   placeholderCount: 0,
   individualCount: 0,
   sugarGlazed: 0,
   chocolate: 0,
   blueberry: 0,
   strawberry: 0,
-  confetti: 0
+  confetti: 0,
+  firstName: "",
+  lastName: "",
+  street: "",
+  city: "",
+  state: "",
+  zip: "",
+  email: ""
 };
 
 //placeholderCount actions extablish a mirror count to totalDonutCount for purposes of indirect manipulation for placeholder and donut images
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case actions.SELECTED_CUSTOMER:
+      console.log(action.customers.firstName);
+      return {
+        ...state,
+        firstName: action.customers.firstName,
+        lastName: action.customers.lastName,
+        street: action.customers.street,
+        city: action.customers.city,
+        state: action.customers.state,
+        zip: action.customers.zip,
+        email: action.customers.email
+      };
+
+    //cases for donut count
     case actions.CLEAR_COUNTER:
       return {
         ...state,

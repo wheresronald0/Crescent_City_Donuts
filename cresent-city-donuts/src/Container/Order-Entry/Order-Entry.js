@@ -135,7 +135,14 @@ class OrderEntry extends Component {
             Enter or Lookup Customer
           </Button>
 
-          <OrderSummary />
+          <OrderSummary
+            sugarGlazedCount={this.props.sugarGlazedCount}
+            chocolateCount={this.props.chocolateCount}
+            blueberryCount={this.props.blueberryCount}
+            strawberryCount={this.props.strawberryCount}
+            confettiCount={this.props.confettiCount}
+            individualCounter={this.props.individualCounter}
+          />
 
           <Button bsStyle="danger">Clear Order</Button>
         </section>

@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import * as actions from "../../store/actions";
 import "./Customer-Data-Search.css";
 import axios from "axios";
 import {
@@ -27,12 +29,12 @@ class CustomerDataSearch extends Component {
     });
   };
 
-  selectThisCustomerHandler = id => {
+  selectThisCustomerHandler = data => {
     //store the customer selected
     console.log("hi from handler");
-    const newId = id;
+    const newId = data;
     console.log(newId);
-    //expand beyond just id, adn give all the infromation to Redux
+    //expand beyond just id, and give all the infromation to Redux
   };
 
   render() {
@@ -40,7 +42,7 @@ class CustomerDataSearch extends Component {
     const eachResult = searchResults.map(customers => {
       return (
         <ul key={customers._id}>
-          <li onClick={event => this.selectThisCustomerHandler(customers)}>
+          <li onClick={event => this.props.onCustomerSelect(customers)}>
             {customers.firstName}&nbsp;
             {customers.lastName}&nbsp;
             {customers.street}&nbsp;
@@ -52,7 +54,7 @@ class CustomerDataSearch extends Component {
         </ul>
       );
     });
-
+    console.log(this.props);
     return (
       <div className="formContainer">
         <Form inline>
@@ -81,4 +83,21 @@ class CustomerDataSearch extends Component {
     );
   }
 }
-export default CustomerDataSearch;
+
+const mapStateToProps = state => {
+  return {};
+  //not sure that I need to know additional state outside of what's already in this component
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onCustomerSelect: customers => {
+      dispatch({ type: actions.SELECTED_CUSTOMER, customers });
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CustomerDataSearch);

@@ -3,7 +3,7 @@ import "./Item-Count.css";
 
 const itemCount = props => {
   return (
-    <div>
+    <div className="itemCountContainer">
       <p>
         Sugar Glazed: <strong> {props.sugarGlazedCount} </strong>
       </p>

@@ -40,7 +40,14 @@ class OrderSummary extends React.Component {
             <hr />
 
             <h4>Order Details:</h4>
-            <ItemCount />
+            <ItemCount
+              sugarGlazedCount={this.props.sugarGlazedCount}
+              chocolateCount={this.props.chocolateCount}
+              blueberryCount={this.props.blueberryCount}
+              strawberryCount={this.props.strawberryCount}
+              confettiCount={this.props.confettiCount}
+              individualCounter={this.props.individualCounter}
+            />
             <h3>Total Cost:</h3>
           </Modal.Body>
           <Modal.Footer>
