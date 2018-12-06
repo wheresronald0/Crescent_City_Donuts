@@ -4,13 +4,25 @@ import "./Item-Count.css";
 const itemCount = props => {
   return (
     <div>
-      <p>Sugar Glazed:</p>
-      <p>Classic Chocolate:</p>
-      <p>Bayou Bluberry:</p>
-      <p>St. Charles Strawberry:</p>
-      <p>Mardi Gras Confetti:</p>
+      <p>
+        Sugar Glazed: <strong> {props.sugarGlazedCount} </strong>
+      </p>
+      <p>
+        Classic Chocolate: <strong> {props.chocolateCount} </strong>{" "}
+      </p>
+      <p>
+        Bayou Bluberry: <strong> {props.blueberryCount} </strong>{" "}
+      </p>
+      <p>
+        St. Charles Strawberry: <strong> {props.strawberryCount} </strong>{" "}
+      </p>
+      <p>
+        Mardi Gras Confetti: <strong> {props.confettiCount} </strong>{" "}
+      </p>
       <hr />
-      <p>Total Count:</p>
+      <h4>
+        Total Count: <strong> {props.individualCounter} </strong>{" "}
+      </h4>
     </div>
   );
 };

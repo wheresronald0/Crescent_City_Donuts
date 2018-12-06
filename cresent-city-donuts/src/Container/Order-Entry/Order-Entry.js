@@ -61,7 +61,7 @@ class OrderEntry extends Component {
     }
     //displays individual count (can delete)
     // console.log("placeholder", this.props.placeholderCounter);
-    // console.log("individual", this.props.individualCounter);
+    console.log("individual", this.props.individualCounter);
     // console.log("sugar", this.props.sugarGlazedCount);
     // console.log("chocolate", this.props.chocolateCount);
     return (
@@ -110,7 +110,14 @@ class OrderEntry extends Component {
         </section>
         <section className="countContainer">
           <div>
-            <ItemCount />
+            <ItemCount
+              sugarGlazedCount={this.props.sugarGlazedCount}
+              chocolateCount={this.props.chocolateCount}
+              blueberryCount={this.props.blueberryCount}
+              strawberryCount={this.props.strawberryCount}
+              confettiCount={this.props.confettiCount}
+              individualCounter={this.props.individualCounter}
+            />
           </div>
 
           <div className="vitualDonutBox">
