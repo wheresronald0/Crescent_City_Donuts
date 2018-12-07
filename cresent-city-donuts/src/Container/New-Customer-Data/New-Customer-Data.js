@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { NavLink, Redirect } from "react-router-dom";
 import "./New-Customer-Data.css";
 import axios from "axios";
@@ -23,9 +24,19 @@ class NewCustomerData extends Component {
     axios.post("http://localhost:4000/customer", data).then(response => {
       if (response) {
         console.log(response);
+        this.updateRedirect();
       }
     });
-    return <Redirect to="/order-entry" />;
+  };
+
+  //redirect controll
+  updateRedirect = () => {
+    this.setState({ redirect: true });
+  };
+  renderOnUpdateRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to="/order-entry" />;
+    }
   };
 
   render() {
@@ -100,6 +111,7 @@ class NewCustomerData extends Component {
         <NavLink to={"/new-order"}>
           <Button bsStyle="warning">Back</Button>
         </NavLink>
+        {this.renderOnUpdateRedirect()}
       </div>
     );
   }
