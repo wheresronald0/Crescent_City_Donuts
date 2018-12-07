@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions";
 import "./Customer-Data-Search.css";
@@ -73,9 +74,12 @@ class CustomerDataSearch extends Component {
           <Button bsStyle="warning" onClick={this.customerSearchHandler}>
             Search for Customer
           </Button>
-          <Button href="/" bsStyle="warning">
-            Back
-          </Button>
+          <NavLink to={"new-customer-data"}>
+            <Button bsStyle="warning">Enter New Customer</Button>
+          </NavLink>
+          <NavLink to={"new-order"}>
+            <Button bsStyle="warning">Back</Button>
+          </NavLink>
         </Form>
         <hr />
         {eachResult}

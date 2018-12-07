@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { NavLink, Redirect } from "react-router-dom";
 import "./New-Customer-Data.css";
 import axios from "axios";
 import {
@@ -12,7 +13,9 @@ import {
 class NewCustomerData extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      redirect: false
+    };
   }
 
   customerDataHandler = () => {
@@ -22,6 +25,7 @@ class NewCustomerData extends Component {
         console.log(response);
       }
     });
+    return <Redirect to="/order-entry" />;
   };
 
   render() {
@@ -89,11 +93,13 @@ class NewCustomerData extends Component {
               onChange={event => this.setState({ email: event.target.value })}
             />
           </FormGroup>
-          <Button onClick={this.customerDataHandler}>Submit Customer</Button>
         </Form>
-        <a href="/">
-          <Button>Back</Button>
-        </a>
+        <Button bsStyle="warning" onClick={this.customerDataHandler}>
+          Submit Customer
+        </Button>
+        <NavLink to={"/new-order"}>
+          <Button bsStyle="warning">Back</Button>
+        </NavLink>
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { NavLink } from "react-router-dom";
 import * as actions from "../../store/actions";
 
 import SugarGlazedOrderTile from "../../Components/Donut-Order-Tile/Sugar-Glazed-Order-Tile";
@@ -21,10 +22,6 @@ import "./Order-Entry.css";
 import { Button } from "react-bootstrap";
 
 class OrderEntry extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     //loops greyed-out placeholder donuts as a visual representation corresponding with total donuts ordered count
     const donutPlaceholder = [];
@@ -61,12 +58,15 @@ class OrderEntry extends Component {
     }
     //displays individual count (can delete)
     // console.log("placeholder", this.props.placeholderCounter);
-    console.log("individual", this.props.individualCounter);
+    // console.log("individual", this.props.individualCounter);
     // console.log("sugar", this.props.sugarGlazedCount);
     // console.log("chocolate", this.props.chocolateCount);
     return (
       <div className="orderContainer">
-        <h2>New Order for: insert name from db</h2>
+        <h2>
+          New Order for: {this.props.firstName}
+          {this.props.lastName}
+        </h2>
         <section className="orderAmount">
           <h3>Enter Number of Donuts for Order</h3>
           <Button bsStyle="warning" onClick={this.props.onIncrementOneCounter}>
@@ -131,9 +131,9 @@ class OrderEntry extends Component {
         </section>
 
         <section className="orderButtons">
-          <Button href="/" bsStyle="warning">
-            Enter or Lookup Customer
-          </Button>
+          <NavLink to={"/new-order"}>
+            <Button bsStyle="warning"> Enter or Lookup Customer</Button>
+          </NavLink>
 
           <OrderSummary
             sugarGlazedCount={this.props.sugarGlazedCount}
@@ -160,7 +160,9 @@ const mapStateToProps = state => {
     chocolateCount: state.chocolate,
     blueberryCount: state.blueberry,
     strawberryCount: state.strawberry,
-    confettiCount: state.confetti
+    confettiCount: state.confetti,
+    firstName: state.firstName,
+    lastName: state.lastName
   };
 };
 

@@ -1,5 +1,4 @@
 import * as actions from "./actions";
-import CustomerDataSearch from "../Container/Customer-Data-Search/Customer-Data-Search";
 
 const initialState = {
   totalDonutCounter: 1,
@@ -37,6 +36,7 @@ const reducer = (state = initialState, action) => {
 
     //cases for donut count
     case actions.CLEAR_COUNTER:
+      console.log(initialState);
       return {
         ...state,
         totalDonutCounter: 0,
@@ -81,6 +81,7 @@ const reducer = (state = initialState, action) => {
           totalDonutCounter: state.totalDonutCounter + 1
         };
       }
+      break;
     case actions.DECREMENT_SUGAR_GLAZED:
       if (state.sugarGlazed > 0) {
         return {
@@ -99,7 +100,7 @@ const reducer = (state = initialState, action) => {
           placeholderCount: state.placeholderCount
         };
       }
-
+      break;
     //chocolate
     case actions.INCREMENT_CHOCOLATE:
       if (state.individualCount < state.totalDonutCounter) {
@@ -119,6 +120,7 @@ const reducer = (state = initialState, action) => {
           totalDonutCounter: state.totalDonutCounter + 1
         };
       }
+      break;
     case actions.DECREMENT_CHOCOLATE:
       if (state.chocolate > 0) {
         return {
@@ -137,6 +139,7 @@ const reducer = (state = initialState, action) => {
           placeholderCount: state.placeholderCount
         };
       }
+      break;
     //chocolate
     case actions.INCREMENT_BLUEBERRY:
       if (state.individualCount < state.totalDonutCounter) {
@@ -156,6 +159,7 @@ const reducer = (state = initialState, action) => {
           totalDonutCounter: state.totalDonutCounter + 1
         };
       }
+      break;
     case actions.DECREMENT_BLUEBERRY:
       if (state.blueberry > 0) {
         return {
@@ -174,7 +178,7 @@ const reducer = (state = initialState, action) => {
           placeholderCount: state.placeholderCount
         };
       }
-
+      break;
     //strawberry
     case actions.INCREMENT_STRAWBERRY:
       if (state.individualCount < state.totalDonutCounter) {
@@ -194,6 +198,7 @@ const reducer = (state = initialState, action) => {
           totalDonutCounter: state.totalDonutCounter + 1
         };
       }
+      break;
     case actions.DECREMENT_STRAWBERRY:
       if (state.strawberry > 0) {
         return {
@@ -212,7 +217,7 @@ const reducer = (state = initialState, action) => {
           placeholderCount: state.placeholderCount
         };
       }
-
+      break;
     //confetti
     case actions.INCREMENT_CONFETTI:
       if (state.individualCount < state.totalDonutCounter) {
@@ -232,6 +237,7 @@ const reducer = (state = initialState, action) => {
           totalDonutCounter: state.totalDonutCounter + 1
         };
       }
+      break;
     case actions.DECREMENT_CONFETTI:
       if (state.confetti > 0) {
         return {
@@ -250,6 +256,9 @@ const reducer = (state = initialState, action) => {
           placeholderCount: state.placeholderCount
         };
       }
+      break;
+    default:
+      console.log("default case");
   }
   return state;
 };

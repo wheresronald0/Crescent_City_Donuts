@@ -8,20 +8,24 @@ import OrderEntry from "../Order-Entry/Order-Entry";
 import OrderSummary from "../../Components/Order-Summary/Order-Summary";
 
 class POSSystem extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <div>
-        <NavBar />
-        <Switch>
-          <Route path="/order-summary" component={OrderSummary} />
-          <Route path="/customer-data-search" component={CustomerDataSearch} />
-          <Route path="/new-customer-data" component={NewCustomerData} />
-          <Route path="/order-entry" component={OrderEntry} />
-          <Route path="/" component={NewOrder} />
-        </Switch>
+        <header>
+          <NavBar />
+        </header>
+        <div>
+          <Switch>
+            <Route
+              path="/customer-data-search"
+              component={CustomerDataSearch}
+            />
+            <Route path="/new-customer-data" component={NewCustomerData} />
+            <Route path="/order-summary" component={OrderSummary} />
+            <Route path="/order-entry" component={OrderEntry} />
+            <Route path="/new-order" component={NewOrder} />
+          </Switch>
+        </div>
       </div>
     );
   }
