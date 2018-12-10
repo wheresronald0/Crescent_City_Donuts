@@ -112,15 +112,11 @@ class NewCustomerData extends Component {
           </FormGroup>
         </Form>
         <Button bsStyle="warning" onClick={this.customerDataHandler}>
-          Submit Customer
+          Save Customer
         </Button>
-        <NavLink to={"/new-order"}>
+        <NavLink to={"/order"}>
           <Button bsStyle="warning">Back</Button>
         </NavLink>
-        {/* <CustomerSummary
-          dadata={this.state.responseData}
-          show={this.state.showModal}
-        /> */}
 
         {this.renderOnUpdateRedirect()}
       </div>

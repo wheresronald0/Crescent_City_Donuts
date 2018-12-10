@@ -131,7 +131,7 @@ class OrderEntry extends Component {
         </section>
 
         <section className="orderButtons">
-          <NavLink to={"/new-order"}>
+          <NavLink to={"/order"}>
             <Button bsStyle="warning"> Enter or Lookup Customer</Button>
           </NavLink>
 

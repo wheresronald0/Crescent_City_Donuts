@@ -11,6 +11,7 @@ import {
   ControlLabel,
   FormControl
 } from "react-bootstrap";
+import CustomerSummary from "../Customer-Summary/Customer-Summary";
 
 class CustomerDataSearch extends Component {
   constructor(props) {
@@ -42,17 +43,22 @@ class CustomerDataSearch extends Component {
     const searchResults = this.state.responseData;
     const eachResult = searchResults.map(customers => {
       return (
-        <ul key={customers._id}>
-          <li onClick={event => this.props.onCustomerSelect(customers)}>
-            {customers.firstName}&nbsp;
-            {customers.lastName}&nbsp;
-            {customers.street}&nbsp;
-            {customers.city}&nbsp;
-            {customers.state}&nbsp;
-            {customers.zip}&nbsp;
-            {customers.email}&nbsp;
-          </li>
-        </ul>
+        <div key={customers._id}>
+          {customers.firstName}&nbsp;
+          {customers.lastName}&nbsp;
+          {customers.street}&nbsp;
+          {customers.city}&nbsp;
+          {customers.state}&nbsp;
+          {customers.zip}&nbsp;
+          {customers.email}&nbsp;
+          <div>
+            <NavLink to={"/customer/" + customers._id}>
+              <Button onClick={event => this.props.onCustomerSelect(customers)}>
+                Select Customer
+              </Button>
+            </NavLink>
+          </div>
+        </div>
       );
     });
     console.log(this.props);
@@ -74,15 +80,15 @@ class CustomerDataSearch extends Component {
           <Button bsStyle="warning" onClick={this.customerSearchHandler}>
             Search for Customer
           </Button>
-          <NavLink to={"new-customer-data"}>
+          <NavLink to={"customer/new"}>
             <Button bsStyle="warning">Enter New Customer</Button>
           </NavLink>
-          <NavLink to={"new-order"}>
+          <NavLink to={"/order"}>
             <Button bsStyle="warning">Back</Button>
           </NavLink>
         </Form>
         <hr />
-        {eachResult}
+        <ul>{eachResult}</ul>
       </div>
     );
   }
