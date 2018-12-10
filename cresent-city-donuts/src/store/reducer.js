@@ -15,14 +15,16 @@ const initialState = {
   city: "",
   state: "",
   zip: "",
-  email: ""
+  email: "",
+  id: ""
 };
 
 //placeholderCount actions extablish a mirror count to totalDonutCount for purposes of indirect manipulation for placeholder and donut images
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actions.SELECTED_CUSTOMER:
-      console.log(action.customers.firstName);
+      console.log(action.customers);
+      console.log("hi from the reducer");
       return {
         ...state,
         firstName: action.customers.firstName,
@@ -31,7 +33,8 @@ const reducer = (state = initialState, action) => {
         city: action.customers.city,
         state: action.customers.state,
         zip: action.customers.zip,
-        email: action.customers.email
+        email: action.customers.email,
+        id: action.customers._id
       };
 
     //cases for donut count

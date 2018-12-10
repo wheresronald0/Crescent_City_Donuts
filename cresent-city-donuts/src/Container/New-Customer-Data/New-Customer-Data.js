@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import * as actions from "../../store/actions";
 import { NavLink, Redirect } from "react-router-dom";
 import "./New-Customer-Data.css";
 import axios from "axios";
@@ -10,12 +11,14 @@ import {
   ControlLabel,
   FormControl
 } from "react-bootstrap";
+import CustomerSummary from "../Customer-Summary/Customer-Summary";
 
 class NewCustomerData extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      redirect: false
+      redirect: false,
+      responseData: []
     };
   }
 
@@ -24,12 +27,13 @@ class NewCustomerData extends Component {
     axios.post("http://localhost:4000/customer", data).then(response => {
       if (response) {
         console.log(response);
+        this.setState({ responseData: response.data });
         this.updateRedirect();
       }
     });
   };
 
-  //redirect controll
+  //redirect control
   updateRedirect = () => {
     this.setState({ redirect: true });
   };
@@ -40,7 +44,9 @@ class NewCustomerData extends Component {
   };
 
   render() {
-    console.log(this.state);
+    const customers = this.state.responseData;
+    this.props.onCustomerSelect(customers);
+
     return (
       <div>
         <Form className="newCustomerForm">
@@ -111,10 +117,31 @@ class NewCustomerData extends Component {
         <NavLink to={"/new-order"}>
           <Button bsStyle="warning">Back</Button>
         </NavLink>
+        {/* <CustomerSummary
+          dadata={this.state.responseData}
+          show={this.state.showModal}
+        /> */}
+
         {this.renderOnUpdateRedirect()}
       </div>
     );
   }
 }
 
-export default NewCustomerData;
+const mapStateToProps = state => {
+  return {};
+  //not sure that I need to know additional state outside of what's already in this component
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onCustomerSelect: customers => {
+      dispatch({ type: actions.SELECTED_CUSTOMER, customers });
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NewCustomerData);
