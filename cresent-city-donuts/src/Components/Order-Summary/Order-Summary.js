@@ -1,6 +1,7 @@
 import React from "react";
 import ItemCount from "../Item-Count/Item-Count";
-import { Modal, Button } from "react-bootstrap";
+import { Modal, Button, Alert } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 
 class OrderSummary extends React.Component {
   constructor(props, context) {
@@ -10,7 +11,8 @@ class OrderSummary extends React.Component {
     this.handleClose = this.handleClose.bind(this);
 
     this.state = {
-      show: false
+      show: false,
+      alert: false
     };
   }
 
@@ -22,7 +24,22 @@ class OrderSummary extends React.Component {
     this.setState({ show: true });
   }
 
+  handleAlert = () => {
+    this.setState({ alert: true });
+  };
+
   render() {
+    const totalCost = this.props.individualCounter * 1.5;
+    let displayAlert = null;
+    if (this.state.alert) {
+      displayAlert = (
+        <Alert bsStyle="success">
+          <strong>Order Completed</strong> Your hot delicious Crescent City
+          Donuts are on the way!
+        </Alert>
+      );
+    }
+
     return (
       <div>
         <Button bsStyle="success" onClick={this.handleShow}>
@@ -31,14 +48,23 @@ class OrderSummary extends React.Component {
 
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Customer Name and Address to be diplayed</Modal.Title>
+            {displayAlert}
+            <Modal.Title>
+              <strong>
+                {this.props.firstName}&nbsp;{this.props.lastName}
+              </strong>
+            </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <h4>Customer Information</h4>
-            <p>Name</p>
-            <p>Address</p>
+            <h4>Customer Address</h4>
+            <div>
+              {this.props.street}
+              {this.props.city}
+              {this.props.state}
+              {this.props.zip}
+              {this.props.email}
+            </div>
             <hr />
-
             <h4>Order Details:</h4>
             <ItemCount
               sugarGlazedCount={this.props.sugarGlazedCount}
@@ -48,11 +74,13 @@ class OrderSummary extends React.Component {
               confettiCount={this.props.confettiCount}
               individualCounter={this.props.individualCounter}
             />
-            <h3>Total Cost:</h3>
+            <h4>Total Cost ${totalCost}</h4>
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.handleClose}>Close</Button>
-            <Button onClick={this.handleClose}>Submit Order</Button>
+            <NavLink to={"/order"}>
+              <Button onClick={this.handleAlert}>Submit Order</Button>
+            </NavLink>
           </Modal.Footer>
         </Modal>
       </div>

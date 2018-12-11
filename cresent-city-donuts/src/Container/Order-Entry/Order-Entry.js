@@ -142,9 +142,18 @@ class OrderEntry extends Component {
             strawberryCount={this.props.strawberryCount}
             confettiCount={this.props.confettiCount}
             individualCounter={this.props.individualCounter}
+            firstName={this.props.firstName}
+            lastName={this.props.lastName}
+            street={this.props.street}
+            city={this.props.city}
+            state={this.props.state}
+            zip={this.props.zip}
+            email={this.props.email}
           />
 
-          <Button bsStyle="danger">Clear Order</Button>
+          <Button bsStyle="danger" onClick={this.props.onClearOrder}>
+            Clear Order
+          </Button>
         </section>
       </div>
     );
@@ -162,7 +171,13 @@ const mapStateToProps = state => {
     strawberryCount: state.strawberry,
     confettiCount: state.confetti,
     firstName: state.firstName,
-    lastName: state.lastName
+    lastName: state.lastName,
+    street: state.street,
+    city: state.city,
+    state: state.state,
+    zip: state.zip,
+    email: state.email,
+    id: state.id
   };
 };
 
@@ -170,6 +185,7 @@ const mapDispatchToProps = dispatch => {
   return {
     //total donut count actions:
     onClearCounter: () => dispatch({ type: actions.CLEAR_COUNTER }),
+    onClearOrder: () => dispatch({ type: actions.CLEAR_ORDER }),
     onIncrementOneCounter: () => dispatch({ type: actions.INCREMENT_ONE }),
     onIncrementSixCounter: () => dispatch({ type: actions.INCREMENT_SIX }),
     onIncrementTwelveCounter: () =>

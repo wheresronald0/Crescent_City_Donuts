@@ -1,7 +1,7 @@
 import * as actions from "./actions";
 
 const initialState = {
-  totalDonutCounter: 1,
+  totalDonutCounter: 0,
   placeholderCount: 0,
   individualCount: 0,
   sugarGlazed: 0,
@@ -44,6 +44,19 @@ const reducer = (state = initialState, action) => {
         ...state,
         totalDonutCounter: 0,
         placeholderCount: 0
+      };
+    case actions.CLEAR_ORDER:
+      console.log(initialState);
+      return {
+        ...state,
+        totalDonutCounter: 0,
+        placeholderCount: 0,
+        individualCount: 0,
+        sugarGlazed: 0,
+        chocolate: 0,
+        blueberry: 0,
+        strawberry: 0,
+        confetti: 0
       };
     case actions.INCREMENT_ONE:
       return {

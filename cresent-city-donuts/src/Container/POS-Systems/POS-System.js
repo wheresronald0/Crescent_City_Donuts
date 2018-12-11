@@ -7,6 +7,7 @@ import NewCustomerData from "../New-Customer-Data/New-Customer-Data";
 import OrderEntry from "../Order-Entry/Order-Entry";
 import OrderSummary from "../../Components/Order-Summary/Order-Summary";
 import CustomerSummary from "../../Container/Customer-Summary/Customer-Summary";
+import CustomerUpdate from "../../Container/Customer-Update/Customer-Update";
 
 class POSSystem extends Component {
   render() {
@@ -20,6 +21,7 @@ class POSSystem extends Component {
             <Route path="/order-summary" component={OrderSummary} />
             <Route path="/customer/new" component={NewCustomerData} />
             <Route path="/order/new" component={OrderEntry} />
+            <Route path="/customer/:id/edit" component={CustomerUpdate} />
             <Route path="/customer/:id" component={CustomerSummary} />
             <Route path="/customer" component={CustomerDataSearch} />
             <Route path="/order" component={NewOrder} />
