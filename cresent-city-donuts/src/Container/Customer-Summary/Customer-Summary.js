@@ -4,6 +4,8 @@ import { NavLink, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import axios from "axios";
 import { Button } from "react-bootstrap";
+import Map from "../../Components/Map/Map";
+import "../Customer-Summary/Customer-Summary.css";
 
 class CustomerSummary extends Component {
   constructor(props, context) {
@@ -25,7 +27,7 @@ class CustomerSummary extends Component {
 
   render() {
     return (
-      <div>
+      <div id="customerSummaryContainer">
         <h3>Customer Summary</h3>
         <div>
           {this.props.firstName}
@@ -36,6 +38,7 @@ class CustomerSummary extends Component {
           {this.props.zip}
           {this.props.email}
         </div>
+        <Map />
 
         <NavLink to={"/order/new"}>
           <Button bsStyle="success">Select Customer & Go To Order</Button>
@@ -67,5 +70,3 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps)(CustomerSummary);
-//Google Map API Key
-//AIzaSyAXcz25j9CjZXtZ3VFTgC4tR1ycF1tvAIg
