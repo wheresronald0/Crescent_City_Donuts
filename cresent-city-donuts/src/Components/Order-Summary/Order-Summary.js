@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Component, Delay } from "react";
 import ItemCount from "../Item-Count/Item-Count";
 import { Modal, Button, Alert } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 
-class OrderSummary extends React.Component {
+class OrderSummary extends Component {
   constructor(props, context) {
     super(props, context);
 
@@ -34,8 +34,8 @@ class OrderSummary extends React.Component {
     if (this.state.alert) {
       displayAlert = (
         <Alert bsStyle="success">
-          <strong>Order Completed</strong> Your hot delicious Crescent City
-          Donuts are on the way!
+          <strong>Order Completed</strong> Your delicious Crescent City Donuts
+          are on the way!
         </Alert>
       );
     }
@@ -78,9 +78,9 @@ class OrderSummary extends React.Component {
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.handleClose}>Close</Button>
-            <NavLink to={"/order"}>
-              <Button onClick={this.handleAlert}>Submit Order</Button>
-            </NavLink>
+            {/* <NavLink to={"/order"}> */}
+            <Button onClick={this.handleAlert}>Submit Order</Button>
+            {/* </NavLink> */}
           </Modal.Footer>
         </Modal>
       </div>
