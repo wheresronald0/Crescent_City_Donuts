@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import * as actions from "../../store/actions";
-import { NavLink, Redirect } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import axios from "axios";
 import { Button } from "react-bootstrap";
@@ -22,30 +21,17 @@ class CustomerSummary extends Component {
         this.props.state
       } ${this.props.zip}`,
       apiKey = "caef51c0755c405b20828ba0b81762f8f1ccadc";
-    console.log("we mounted!");
     axios
       .get(
         "https://api.geocod.io/v1.3/geocode?q=" + address + "&api_key=" + apiKey
       )
       .then(response => {
-        console.log(response.data.results[0].location);
-        console.log("hi from geo");
         this.setState({
           center: response.data.results[0].location,
           gotGeo: true
         });
       });
   }
-
-  //   updateRedirect = () => {
-  //     this.setState({ redirect: true });
-  //   };
-
-  //   renderOnUpdateRedirect = () => {
-  //     if (this.state.redirect) {
-  //       return <Redirect to="/customer" />;
-  //     }
-  //   };
 
   render() {
     let showMap = null;
@@ -81,7 +67,6 @@ class CustomerSummary extends Component {
         <NavLink to={"/customer"}>
           <Button bsStyle="warning">Back</Button>
         </NavLink>
-        {/* {this.renderOnUpdateRedirect()} */}
       </div>
     );
   }

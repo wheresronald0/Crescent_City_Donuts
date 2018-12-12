@@ -11,7 +11,6 @@ import {
   ControlLabel,
   FormControl
 } from "react-bootstrap";
-import CustomerSummary from "../Customer-Summary/Customer-Summary";
 
 class CustomerDataSearch extends Component {
   constructor(props) {
@@ -61,7 +60,7 @@ class CustomerDataSearch extends Component {
         </div>
       );
     });
-    console.log(this.props);
+
     return (
       <div className="formContainer">
         <Form inline>

@@ -3,6 +3,7 @@
   flex-direction: row;
   justify-content: space-between;
   border-bottom: solid 15px black;
+  background-color: rgb(243, 243, 243);
 }
 
 .logoContainer {
@@ -26,11 +27,14 @@
 .nameFont {
   font-family: "Merienda", cursive;
   font-size: 36px;
-  color: rgb(255, 205, 40);
+  font-weight: 600;
+  color: rgb(255, 174, 0);
+  /* color: rgb(255, 205, 40); */
 }
 
 .donutFont {
   font-family: "Chango", cursive;
   margin: 10px 0 0 17px;
   font-size: 33px;
+  color: black;
 }

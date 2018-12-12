@@ -11,7 +11,6 @@ import {
   ControlLabel,
   FormControl
 } from "react-bootstrap";
-import CustomerSummary from "../Customer-Summary/Customer-Summary";
 
 class NewCustomerData extends Component {
   constructor(props) {
@@ -26,7 +25,6 @@ class NewCustomerData extends Component {
     const data = this.state;
     axios.post("http://localhost:4000/customer", data).then(response => {
       if (response) {
-        console.log(response);
         this.setState({ responseData: response.data });
         this.updateRedirect();
       }

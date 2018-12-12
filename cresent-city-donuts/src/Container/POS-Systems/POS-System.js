@@ -8,7 +8,8 @@ import OrderEntry from "../Order-Entry/Order-Entry";
 import OrderSummary from "../../Components/Order-Summary/Order-Summary";
 import CustomerSummary from "../../Container/Customer-Summary/Customer-Summary";
 import CustomerUpdate from "../../Container/Customer-Update/Customer-Update";
-
+import backgroundDark from "../../Assests/backgroundDark.jpg";
+import "../POS-Systems/POS-Systems.css";
 class POSSystem extends Component {
   render() {
     return (
@@ -16,7 +17,15 @@ class POSSystem extends Component {
         <header>
           <NavBar />
         </header>
-        <div>
+        <div
+          className="layoutContainer"
+          style={{
+            backgroundImage: "url(" + backgroundDark + ")",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat"
+          }}
+        >
           <Switch>
             <Route path="/order-summary" component={OrderSummary} />
             <Route path="/customer/new" component={NewCustomerData} />

@@ -1,7 +1,6 @@
-import React, { Component, Delay } from "react";
+import React, { Component } from "react";
 import ItemCount from "../Item-Count/Item-Count";
 import { Modal, Button, Alert } from "react-bootstrap";
-import { NavLink, Redirect } from "react-router-dom";
 
 class OrderSummary extends Component {
   constructor(props, context) {

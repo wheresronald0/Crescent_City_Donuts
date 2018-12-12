@@ -189,5 +189,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(CustomerUpdate);
-
-//AIzaSyAXcz25j9CjZXtZ3VFTgC4tR1ycF1tvAIg
