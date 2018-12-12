@@ -1,18 +1,24 @@
 import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
+import { Glyphicon } from "react-bootstrap";
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+const AnyReactComponent = ({ text }) => (
+  <div>
+    <Glyphicon glyph="home" style={{ fontSize: "2em", color: "purple" }} />
+    {/* <h3>
+
+      <strong> {text} </strong>
+    </h3> */}
+  </div>
+);
 
 class Map extends Component {
-  static defaultProps = {
-    center: {
-      lat: 39.410083,
-      lng: -77.332167
-    },
-    zoom: 11
-  };
+  constructor(props) {
+    super(props);
+  }
 
   render() {
+    console.log(this.props);
     return (
       // Important! Always set the container height explicitly
       <div style={{ height: "100vh", width: "100%" }}>
@@ -27,7 +33,7 @@ class Map extends Component {
           <AnyReactComponent
             // lat={39.41}
             // lng={77.33}
-            text={"Customer Location"}
+            text={"*"}
           />
         </GoogleMapReact>
       </div>

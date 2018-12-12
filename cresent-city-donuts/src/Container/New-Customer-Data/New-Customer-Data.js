@@ -39,7 +39,7 @@ class NewCustomerData extends Component {
   };
   renderOnUpdateRedirect = () => {
     if (this.state.redirect) {
-      return <Redirect to="/order-entry" />;
+      return <Redirect to="/order/new" />;
     }
   };
 
