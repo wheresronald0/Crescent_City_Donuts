@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions";
-import "./Customer-Data-Search.css";
+import "../Customer-Data-Search/Customer-Data-Search.css";
 import axios from "axios";
 import {
   Form,
@@ -11,6 +11,7 @@ import {
   ControlLabel,
   FormControl
 } from "react-bootstrap";
+import backgroundLight from "../../Assests/background3.jpg";
 
 class CustomerDataSearch extends Component {
   constructor(props) {
@@ -62,32 +63,46 @@ class CustomerDataSearch extends Component {
     });
 
     return (
-      <div className="formContainer">
-        <Form inline>
-          <FormGroup controlId="formInlineName">
-            <ControlLabel>
-              Customer Lookup by First Name, Last Name, or Email{" "}
-            </ControlLabel>{" "}
-            <FormControl
-              type="text"
-              placeholder="Jane Doe"
-              onChange={event =>
-                this.setState({ searchParameter: event.target.value })
-              }
-            />
-          </FormGroup>{" "}
-          <Button bsStyle="warning" onClick={this.customerSearchHandler}>
-            Search for Customer
-          </Button>
-          <NavLink to={"customer/new"}>
-            <Button bsStyle="warning">Enter New Customer</Button>
-          </NavLink>
-          <NavLink to={"/order"}>
-            <Button bsStyle="warning">Back</Button>
-          </NavLink>
-        </Form>
-        <hr />
-        <ul>{eachResult}</ul>
+      <div className="searchFormContainer">
+        <div>
+          <Form inline className="customerLookupForm">
+            <FormGroup controlId="formInlineName">
+              <ControlLabel>
+                Customer Lookup by First Name, Last Name, or Email{" "}
+              </ControlLabel>{" "}
+              <FormControl
+                type="text"
+                placeholder="Jane Doe"
+                onChange={event =>
+                  this.setState({ searchParameter: event.target.value })
+                }
+              />
+            </FormGroup>{" "}
+            <Button bsStyle="warning" onClick={this.customerSearchHandler}>
+              Search for Customer
+            </Button>
+            <NavLink to={"customer/new"}>
+              <Button bsStyle="warning">Enter New Customer</Button>
+            </NavLink>
+            <NavLink to={"/order"}>
+              <Button bsStyle="warning">Back</Button>
+            </NavLink>
+          </Form>
+          {/* <hr id="searchHR" /> */}
+        </div>
+
+        <div
+          className="seachContainer"
+          style={{
+            backgroundImage: "url(" + backgroundLight + ")",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat"
+            // opacity: "0.5"
+          }}
+        >
+          <ul>{eachResult}</ul>
+        </div>
       </div>
     );
   }

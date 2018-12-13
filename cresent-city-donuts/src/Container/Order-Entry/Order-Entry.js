@@ -20,6 +20,7 @@ import OrderSummary from "../../Components/Order-Summary/Order-Summary";
 
 import "./Order-Entry.css";
 import { Button } from "react-bootstrap";
+import backgroundDonuts from "../../Assests/background4.jpg";
 
 class OrderEntry extends Component {
   render() {
@@ -63,98 +64,117 @@ class OrderEntry extends Component {
     // console.log("chocolate", this.props.chocolateCount);
     return (
       <div className="orderContainer">
-        <h2>
-          New Order for: {this.props.firstName}
-          {this.props.lastName}
-        </h2>
-        <section className="orderAmount">
-          <h3>Enter Number of Donuts for Order</h3>
-          <Button bsStyle="warning" onClick={this.props.onIncrementOneCounter}>
-            Single
-          </Button>
-          <Button bsStyle="warning" onClick={this.props.onIncrementSixCounter}>
-            Half-Dozen
-          </Button>
-          <Button
-            bsStyle="warning"
-            onClick={this.props.onIncrementTwelveCounter}
-          >
-            Dozen
-          </Button>
-          <Button bsStyle="danger" onClick={this.props.onClearCounter}>
-            Reset
-          </Button>
-          <CounterOutput totalCount={this.props.counterFromReducerState} />
-        </section>
-        <section className="donutThumbnails">
-          <SugarGlazedOrderTile
-            incrementDonut={this.props.onIncrementSugarGlazedCounter}
-            decrementDonut={this.props.onDecrementSugarGalzedCounter}
-          />
-          <ChocolateOrderTile
-            incrementDonut={this.props.onIncrementChocolateCounter}
-            decrementDonut={this.props.onDecrementChocolateCounter}
-          />
-          <BlueberryOrderTile
-            incrementDonut={this.props.onIncrementBlueberryCounter}
-            decrementDonut={this.props.onDecrementBlueberryCounter}
-          />
-          <StrawberryOrderTile
-            incrementDonut={this.props.onIncrementStrawberryCounter}
-            decrementDonut={this.props.onDecrementStrawberryCounter}
-          />
-          <ConfettiOrderTile
-            incrementDonut={this.props.onIncrementConfettiCounter}
-            decrementDonut={this.props.onDecrementConfettiCounter}
-          />
-        </section>
-        <section className="countContainer">
-          <div>
-            <ItemCount
-              sugarGlazedCount={this.props.sugarGlazedCount}
-              chocolateCount={this.props.chocolateCount}
-              blueberryCount={this.props.blueberryCount}
-              strawberryCount={this.props.strawberryCount}
-              confettiCount={this.props.confettiCount}
-              individualCounter={this.props.individualCounter}
-            />
+        <section className="orderBodyContainer">
+          <div id="orderBodySeperator">
+            <section className="orderTopSection">
+              <h3 id="thisCustomersOrder">
+                New Order for: {this.props.firstName} {this.props.lastName}
+              </h3>
+            </section>
+            <div className="orderAmount">
+              <div>
+                <h4 style={{}}>How Many Donuts for this Order?</h4>
+              </div>
+              <div className="orderButtonsContainer">
+                <Button
+                  bsStyle="info"
+                  onClick={this.props.onIncrementOneCounter}
+                >
+                  Single
+                </Button>
+                <Button
+                  bsStyle="info"
+                  onClick={this.props.onIncrementSixCounter}
+                >
+                  Half-Dozen
+                </Button>
+                <Button
+                  bsStyle="info"
+                  onClick={this.props.onIncrementTwelveCounter}
+                >
+                  Dozen
+                </Button>
+                <Button bsStyle="danger" onClick={this.props.onClearCounter}>
+                  Reset
+                </Button>
+              </div>
+            </div>
+
+            <div className="donutThumbnails">
+              <SugarGlazedOrderTile
+                incrementDonut={this.props.onIncrementSugarGlazedCounter}
+                decrementDonut={this.props.onDecrementSugarGalzedCounter}
+              />
+              <ChocolateOrderTile
+                incrementDonut={this.props.onIncrementChocolateCounter}
+                decrementDonut={this.props.onDecrementChocolateCounter}
+              />
+              <BlueberryOrderTile
+                incrementDonut={this.props.onIncrementBlueberryCounter}
+                decrementDonut={this.props.onDecrementBlueberryCounter}
+              />
+              <StrawberryOrderTile
+                incrementDonut={this.props.onIncrementStrawberryCounter}
+                decrementDonut={this.props.onDecrementStrawberryCounter}
+              />
+              <ConfettiOrderTile
+                incrementDonut={this.props.onIncrementConfettiCounter}
+                decrementDonut={this.props.onDecrementConfettiCounter}
+              />
+            </div>
+
+            <div className="orderButtonsContainer">
+              <NavLink to={"/order"}>
+                <Button bsStyle="warning">Lookup Customer</Button>
+              </NavLink>
+              <OrderSummary
+                sugarGlazedCount={this.props.sugarGlazedCount}
+                chocolateCount={this.props.chocolateCount}
+                blueberryCount={this.props.blueberryCount}
+                strawberryCount={this.props.strawberryCount}
+                confettiCount={this.props.confettiCount}
+                individualCounter={this.props.individualCounter}
+                firstName={this.props.firstName}
+                lastName={this.props.lastName}
+                street={this.props.street}
+                city={this.props.city}
+                state={this.props.state}
+                zip={this.props.zip}
+                email={this.props.email}
+              />
+              <Button bsStyle="danger" onClick={this.props.onClearOrder}>
+                Clear Order
+              </Button>
+            </div>
           </div>
-
-          <div className="vitualDonutBox">
-            {sugarGlazedDonut}
-            {chocolateDonut}
-            {blueberryDonut}
-            {strawberryDonut}
-            {confettiDonut}
-            {donutPlaceholder}
+          <div className="countContainer">
+            <h3>Fill Your Virtual Donut Box</h3>
+            <div className="vitualDonutBox">
+              {sugarGlazedDonut}
+              {chocolateDonut}
+              {blueberryDonut}
+              {strawberryDonut}
+              {confettiDonut}
+              {donutPlaceholder}
+            </div>
+          </div>
+          <div className="itemAmountContainer">
+            <h3 id="itemTitle">Donut Count</h3>
+            <div className="itemAmount">
+              <ItemCount
+                sugarGlazedCount={this.props.sugarGlazedCount}
+                chocolateCount={this.props.chocolateCount}
+                blueberryCount={this.props.blueberryCount}
+                strawberryCount={this.props.strawberryCount}
+                confettiCount={this.props.confettiCount}
+                individualCounter={this.props.individualCounter}
+                totalCount={this.props.counterFromReducerState}
+              />
+            </div>
           </div>
         </section>
 
-        <section className="orderButtons">
-          <NavLink to={"/order"}>
-            <Button bsStyle="warning"> Enter or Lookup Customer</Button>
-          </NavLink>
-
-          <OrderSummary
-            sugarGlazedCount={this.props.sugarGlazedCount}
-            chocolateCount={this.props.chocolateCount}
-            blueberryCount={this.props.blueberryCount}
-            strawberryCount={this.props.strawberryCount}
-            confettiCount={this.props.confettiCount}
-            individualCounter={this.props.individualCounter}
-            firstName={this.props.firstName}
-            lastName={this.props.lastName}
-            street={this.props.street}
-            city={this.props.city}
-            state={this.props.state}
-            zip={this.props.zip}
-            email={this.props.email}
-          />
-
-          <Button bsStyle="danger" onClick={this.props.onClearOrder}>
-            Clear Order
-          </Button>
-        </section>
+        <div />
       </div>
     );
   }

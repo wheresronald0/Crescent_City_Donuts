@@ -4,7 +4,9 @@ const counterOutput = props => {
   return (
     <div>
       <strong>
-        <h2>{props.totalCount} </h2> Donuts Ordered
+        <h4>
+          Donuts Ordered: <strong> {props.totalCount} </strong>{" "}
+        </h4>
       </strong>
     </div>
   );

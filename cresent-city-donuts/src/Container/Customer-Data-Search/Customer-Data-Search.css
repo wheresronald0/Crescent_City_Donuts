@@ -1,3 +1,21 @@
-.formContainer {
-  margin: 30px 100px;
+.SsearchContainer {
+  height: 100%;
+  width: 100%;
+  /* position: absolute; */
+}
+
+.searchFormContainer {
+  /* margin: 0px 50px; */
+  /* padding-top: 50px; */
+  /* height: 768px; */
+}
+
+/* #searchHR {
+  border: solid black 1px;
+} */
+
+.customerLookupForm {
+  background-color: white;
+  height: 80px;
+  width: 100%;
 }

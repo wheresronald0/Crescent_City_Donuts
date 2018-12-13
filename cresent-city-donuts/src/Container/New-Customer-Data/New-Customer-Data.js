@@ -11,6 +11,7 @@ import {
   ControlLabel,
   FormControl
 } from "react-bootstrap";
+import backgroundLight from "../../Assests/background3.jpg";
 
 class NewCustomerData extends Component {
   constructor(props) {
@@ -46,8 +47,20 @@ class NewCustomerData extends Component {
     this.props.onCustomerSelect(customers);
 
     return (
-      <div>
+      <div
+        className="newCustomerFormContainer"
+        style={{
+          backgroundImage: "url(" + backgroundLight + ")",
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat"
+          // opacity: "0.5"
+        }}
+      >
         <Form className="newCustomerForm">
+          <h3>
+            <strong>Enter New Crescent City Customer</strong>
+          </h3>
           <FormGroup>
             <ControlLabel>First Name</ControlLabel>
             <FormControl
@@ -108,13 +121,13 @@ class NewCustomerData extends Component {
               onChange={event => this.setState({ email: event.target.value })}
             />
           </FormGroup>
+          <Button bsStyle="warning" onClick={this.customerDataHandler}>
+            Save Customer
+          </Button>
+          <NavLink to={"/order"}>
+            <Button bsStyle="warning">Back</Button>
+          </NavLink>
         </Form>
-        <Button bsStyle="warning" onClick={this.customerDataHandler}>
-          Save Customer
-        </Button>
-        <NavLink to={"/order"}>
-          <Button bsStyle="warning">Back</Button>
-        </NavLink>
 
         {this.renderOnUpdateRedirect()}
       </div>

@@ -16,7 +16,7 @@ const strawberryOrderTile = props => {
           <Glyphicon glyph="minus" />
         </Button>
       </div>
-      <p>St. Charles Strawberry:y</p>
+      <p>St. Charles Strawberry</p>
     </div>
   );
 };

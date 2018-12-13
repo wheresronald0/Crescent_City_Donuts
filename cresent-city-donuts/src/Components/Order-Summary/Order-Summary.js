@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ItemCount from "../Item-Count/Item-Count";
 import { Modal, Button, Alert } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 
 class OrderSummary extends Component {
   constructor(props, context) {
@@ -64,7 +65,6 @@ class OrderSummary extends Component {
               {this.props.email}
             </div>
             <hr />
-            <h4>Order Details:</h4>
             <ItemCount
               sugarGlazedCount={this.props.sugarGlazedCount}
               chocolateCount={this.props.chocolateCount}
@@ -73,13 +73,26 @@ class OrderSummary extends Component {
               confettiCount={this.props.confettiCount}
               individualCounter={this.props.individualCounter}
             />
-            <h4>Total Cost ${totalCost}</h4>
+            <h4>
+              <strong>Total Cost ${totalCost} </strong>
+            </h4>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={this.handleClose}>Close</Button>
-            {/* <NavLink to={"/order"}> */}
-            <Button onClick={this.handleAlert}>Submit Order</Button>
-            {/* </NavLink> */}
+            <Button bsStyle="danger" onClick={this.handleClose}>
+              Go Back- It's Not Quite Right
+            </Button>
+            <Button bsStyle="success" onClick={this.handleAlert}>
+              Submit Order
+            </Button>
+            <NavLink to={"/order"}>
+              <Button
+                bsStyle="success"
+                onClick={this.handleAlert}
+                style={{ marginLeft: "92px" }}
+              >
+                Start a New Order
+              </Button>
+            </NavLink>
           </Modal.Footer>
         </Modal>
       </div>

@@ -1,39 +1,92 @@
 .orderContainer {
-  margin: 0 40px;
+  margin: 20px 15px;
+  /* font-family: "Chango", cursive;
+  font-size: 0.9em; */
+}
+.orderTopSection {
 }
 
-.donutThumbnails {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 30px;
-}
-
-.countContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin-bottom: 30px;
-}
-
-.orderButtons {
-  display: flex;
-  flex-direction: row;
-}
-
-button {
-  margin: 0 10px;
-}
-
-.orderAmount {
-  margin: 30px 0;
+.orderBodyContainer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
+#orderBodySeperator {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: rgb(231, 231, 231);
+  height: 630px;
+  width: 530px;
+  border-radius: 5px;
+}
+
+.orderAmount {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 90px;
+  width: 480px;
+  /* background-color: white; */
+  border-radius: 5px;
+}
+
+.orderButtonsContainer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 70px;
+  width: 480px;
+}
+
+.donutThumbnails {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  height: 380px;
+  width: 480px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.countContainer {
+  width: 45%;
+  font-family: "Chango", cursive;
+  text-align: center;
+}
 .vitualDonutBox {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 70%;
+  border-radius: 5px;
+}
+
+.itemAmountContainer {
+  height: 380px;
+  width: 270px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: rgb(231, 231, 231);
+  border-radius: 5px;
+}
+.itemAmount {
+  height: 300px;
+  width: 235px;
+  background-color: white;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#thisCustomersOrder {
+  font-family: "Chango", cursive;
+}
+
+#itemTitle {
+  font-family: "Chango", cursive;
 }

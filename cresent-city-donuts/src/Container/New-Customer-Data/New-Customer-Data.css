@@ -1,3 +1,17 @@
+.newCustomerFormContainer {
+  height: 768px;
+  width: 100%;
+  position: absolute;
+}
+
 .newCustomerForm {
-  width: 400px;
+  height: 100%;
+  margin: 0px 30px 0 61%;
+  padding-top: 20px;
+  width: 450px;
+  background-color: rgba(255, 255, 255, 0.349);
+}
+
+#ControlLabel {
+  font-size: 90px;
 }
