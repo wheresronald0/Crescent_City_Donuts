@@ -18,6 +18,7 @@
   align-items: center;
   border: solid 6px blueviolet;
   box-shadow: 0px 0px 6px 2px rgb(187, 187, 187);
+  font-family: "Chango", cursive;
 }
 
 .newCustomer {
@@ -31,6 +32,7 @@
   align-items: center;
   border: solid 6px blueviolet;
   box-shadow: 0px 0px 8px 3px rgb(187, 187, 187);
+  font-family: "Chango", cursive;
 }
 .orderEntry {
   height: 150px;
@@ -43,22 +45,23 @@
   align-items: center;
   border: solid 6px green;
   box-shadow: 0px 0px 6px 2px rgb(187, 187, 187);
+  font-family: "Chango", cursive;
 }
 
 .existingCustomer:hover {
-  box-shadow: 0px 0px 7px 2px rgb(255, 255, 255);
+  box-shadow: 0px 0px 8px 2px rgb(255, 255, 255);
 }
 .newCustomer:hover {
-  box-shadow: 0px 0px 9px 3px rgb(255, 255, 255);
+  box-shadow: 0px 0px 10px 3px rgb(255, 255, 255);
 }
 .orderEntry:hover {
-  box-shadow: 0px 0px 7px 2px rgb(255, 255, 255);
+  box-shadow: 0px 0px 8px 2px rgb(255, 255, 255);
 }
 
 .searchLable {
-  color: white;
+  color: rgb(224, 224, 224);
   font-size: 18px;
   font-weight: 600;
-  padding: 20px;
+  padding: 10px;
   text-align: center;
 }
