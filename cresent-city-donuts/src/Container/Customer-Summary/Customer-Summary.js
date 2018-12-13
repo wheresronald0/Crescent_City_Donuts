@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import axios from "axios";
-import { Button } from "react-bootstrap";
+import { Button, Table } from "react-bootstrap";
 import Map from "../../Components/Map/Map";
 import "../Customer-Summary/Customer-Summary.css";
 
@@ -44,30 +44,72 @@ class CustomerSummary extends Component {
     }
 
     return (
-      <div id="customerSummaryContainer">
-        <h3>Customer Summary</h3>
-        <div>
-          {this.props.firstName}
-          {this.props.lastName}
-          {this.props.street}
-          {this.props.city}
-          {this.props.state}
-          {this.props.zip}
-          {this.props.email}
-        </div>
-        {showMap}
+      <Table responsive id="customerSummaryContainer">
+        <tr>
+          <th>
+            <h3>Customer Summary</h3>
+          </th>
+        </tr>
 
-        <NavLink to={"/order/new"}>
-          <Button bsStyle="success">Select Customer & Go To Order</Button>
-        </NavLink>
+        <tbody>
+          <tr>
+            <td>{showMap}</td>
+            <td>
+              <p>
+                <strong>First Name: </strong>
+                {this.props.firstName}
+              </p>
+              <p>
+                <strong>Last Name: </strong>
+                {this.props.lastName}
+              </p>
+              <p>
+                <strong>Street: </strong>
+                {this.props.street}{" "}
+              </p>
+              <p>
+                <strong>City: </strong>
+                {this.props.city}{" "}
+              </p>
+              <p>
+                <strong>State: </strong>
+                {this.props.state}
+              </p>
+              <p>
+                <strong>Zip: </strong>
+                {this.props.zip}{" "}
+              </p>
+              <p>
+                <strong>Email: </strong>
+                {this.props.email}{" "}
+              </p>
+              <p>
+                <strong>Birthday: </strong>{" "}
+              </p>
+              <p>
+                <strong>Recent Orders: </strong>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <NavLink to={"/order/new"}>
+                <Button bsStyle="success">Select Customer & Go To Order</Button>
+              </NavLink>
 
-        <NavLink to={"/customer/" + this.props.id + "/edit"}>
-          <Button bsStyle="warning">Update Customer</Button>
-        </NavLink>
-        <NavLink to={"/customer"}>
-          <Button bsStyle="warning">Back</Button>
-        </NavLink>
-      </div>
+              <NavLink
+                to={"/customer/" + this.props.id + "/edit"}
+                id="updateCustomerButton"
+              >
+                <Button bsStyle="warning">Update Customer</Button>
+              </NavLink>
+              <NavLink to={"/customer"}>
+                <Button bsStyle="warning">Back</Button>
+              </NavLink>
+            </td>
+          </tr>
+        </tbody>
+      </Table>
     );
   }
 }

@@ -1,4 +1,6 @@
 #customerSummaryContainer {
-  height: 200px;
-  width: 700px;
+  margin-left: 40px;
+}
+#updateCustomerButton {
+  margin: 0 15px;
 }
