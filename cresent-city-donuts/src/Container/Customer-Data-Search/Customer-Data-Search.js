@@ -24,11 +24,14 @@ class CustomerDataSearch extends Component {
 
   customerSearchHandler = () => {
     const data = this.state.searchParameter;
-    axios.get("http://localhost:4000/customer/" + data).then(response => {
-      if (response) {
-        this.setState({ responseData: response.data });
-      }
-    });
+    axios
+      .get("https://crescent-city-donuts.herokuapp.com/customer/" + data)
+      // axios.get("http://localhost:4000/customer/" + data)
+      .then(response => {
+        if (response) {
+          this.setState({ responseData: response.data });
+        }
+      });
   };
 
   render() {

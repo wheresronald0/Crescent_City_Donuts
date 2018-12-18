@@ -41,7 +41,11 @@ class CustomerUpdate extends Component {
   customerUpdateHandler = () => {
     const data = this.state;
     axios
-      .put("http://localhost:4000/customer/" + this.state.id, data)
+      .put(
+        "https://crescent-city-donuts.herokuapp.com/customer/" + this.state.id,
+        data
+      )
+      // .put("http://localhost:4000/customer/" + this.state.id, data)
       .then(response => {
         this.updateRedirect();
       });
@@ -49,7 +53,10 @@ class CustomerUpdate extends Component {
 
   customerDeleteHandler = () => {
     axios
-      .delete("http://localhost:4000/customer/" + this.props.id)
+      .delete(
+        "https://crescent-city-donuts.herokuapp.com/customer/" + this.props.id
+      )
+      // .delete("http://localhost:4000/customer/" + this.props.id)
       .then(response => {
         this.deleteRedirect();
       });

@@ -24,12 +24,15 @@ class NewCustomerData extends Component {
 
   customerDataHandler = () => {
     const data = this.state;
-    axios.post("http://localhost:4000/customer", data).then(response => {
-      if (response) {
-        this.setState({ responseData: response.data });
-        this.updateRedirect();
-      }
-    });
+    axios
+      .post("https://crescent-city-donuts.herokuapp.com/customer", data)
+      // axios.post("http://localhost:4000/customer", data)
+      .then(response => {
+        if (response) {
+          this.setState({ responseData: response.data });
+          this.updateRedirect();
+        }
+      });
   };
 
   //redirect control
