@@ -4,17 +4,19 @@ import { Glyphicon } from "react-bootstrap";
 
 const AnyReactComponent = ({ text }) => (
   <div>
-    <Glyphicon glyph="home" style={{ fontSize: "2em", color: "purple" }} />
-    {/* <h3>
-
-      <strong> {text} </strong>
-    </h3> */}
+    <Glyphicon
+      glyph="home"
+      style={{
+        fontSize: "2em",
+        color: "black"
+      }}
+    />
+    {/* <h5>{text}</h5> */}
   </div>
 );
 
 class Map extends Component {
   render() {
-    console.log(this.props);
     return (
       // Important! Always set the container height explicitly
       <div style={{ height: "60vh", width: "100%" }}>
@@ -29,7 +31,7 @@ class Map extends Component {
           <AnyReactComponent
             lat={this.props.center.lat}
             lng={this.props.center.lng}
-            text={"*"}
+            // text={"Customer's Home"}
           />
         </GoogleMapReact>
       </div>

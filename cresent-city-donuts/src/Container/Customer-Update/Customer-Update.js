@@ -32,7 +32,6 @@ class CustomerUpdate extends Component {
       updateRedirect: false,
       deleteRedirect: false
     });
-    console.log(this.state);
   }
   componentWillUnmount() {
     const customers = this.state;
@@ -44,7 +43,6 @@ class CustomerUpdate extends Component {
     axios
       .put("http://localhost:4000/customer/" + this.state.id, data)
       .then(response => {
-        console.log(response);
         this.updateRedirect();
       });
   };
@@ -53,7 +51,6 @@ class CustomerUpdate extends Component {
     axios
       .delete("http://localhost:4000/customer/" + this.props.id)
       .then(response => {
-        console.log(response);
         this.deleteRedirect();
       });
   };
@@ -84,7 +81,6 @@ class CustomerUpdate extends Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <div
         className="newCustomerFormContainer"

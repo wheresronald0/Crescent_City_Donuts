@@ -1,5 +1,4 @@
 import React from "react";
-import "./Item-Count.css";
 import CounterOutput from "../Counter-Output/Counter-Output";
 
 const itemCount = props => {

@@ -31,17 +31,8 @@ class CustomerDataSearch extends Component {
     });
   };
 
-  selectThisCustomerHandler = data => {
-    //store the customer selected
-    console.log("hi from handler");
-    const newId = data;
-    console.log(newId);
-    //expand beyond just id, and give all the infromation to Redux
-  };
-
   render() {
     const searchResults = this.state.responseData;
-    console.log(searchResults);
     const eachResult = searchResults.map(customers => {
       return (
         <div key={customers._id}>
@@ -77,7 +68,6 @@ class CustomerDataSearch extends Component {
           backgroundPosition: "center",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat"
-          // opacity: "0.5"
         }}
       >
         <div>
@@ -116,7 +106,6 @@ class CustomerDataSearch extends Component {
 
 const mapStateToProps = state => {
   return {};
-  //not sure that I need to know additional state outside of what's already in this component
 };
 
 const mapDispatchToProps = dispatch => {

@@ -20,7 +20,6 @@ import OrderSummary from "../../Components/Order-Summary/Order-Summary";
 import "./Order-Entry.css";
 import { Button } from "react-bootstrap";
 
-
 class OrderEntry extends Component {
   render() {
     //loops greyed-out placeholder donuts as a visual representation corresponding with total donuts ordered count
@@ -56,11 +55,7 @@ class OrderEntry extends Component {
     for (let j = 0; j < confettiDonutCnt; j++) {
       confettiDonut.push(<ConfettiDonut key={j} />);
     }
-    //displays individual count (can delete)
-    // console.log("placeholder", this.props.placeholderCounter);
-    // console.log("individual", this.props.individualCounter);
-    // console.log("sugar", this.props.sugarGlazedCount);
-    // console.log("chocolate", this.props.chocolateCount);
+
     return (
       <div className="orderContainer">
         <section className="orderBodyContainer">
@@ -133,6 +128,7 @@ class OrderEntry extends Component {
                 strawberryCount={this.props.strawberryCount}
                 confettiCount={this.props.confettiCount}
                 individualCounter={this.props.individualCounter}
+                totalCount={this.props.counterFromReducerState}
                 firstName={this.props.firstName}
                 lastName={this.props.lastName}
                 street={this.props.street}

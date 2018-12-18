@@ -9,7 +9,6 @@ import OrderSummary from "../../Components/Order-Summary/Order-Summary";
 import CustomerSummary from "../../Container/Customer-Summary/Customer-Summary";
 import CustomerUpdate from "../../Container/Customer-Update/Customer-Update";
 
-import "../POS-Systems/POS-Systems.css";
 class POSSystem extends Component {
   render() {
     return (

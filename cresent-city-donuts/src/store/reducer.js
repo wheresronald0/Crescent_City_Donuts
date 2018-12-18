@@ -23,8 +23,6 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actions.SELECTED_CUSTOMER:
-      console.log(action.customers);
-      console.log("hi from the reducer");
       return {
         ...state,
         firstName: action.customers.firstName,

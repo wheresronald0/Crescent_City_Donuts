@@ -6,9 +6,6 @@
   align-items: center;
   height: 100px;
   width: 160px;
-  /* border: 0px solid rgb(209, 209, 209);
-  border-radius: 5px;
-  box-shadow: 0 1px 6px 0px grey; */
 }
 .donutTileWrapper {
   display: flex;
@@ -27,5 +24,4 @@
   border-radius: 50px;
   border: none;
   background-color: rgb(241, 241, 241);
-  /* box-shadow: 0 1px 3px 0 grey; */
 }

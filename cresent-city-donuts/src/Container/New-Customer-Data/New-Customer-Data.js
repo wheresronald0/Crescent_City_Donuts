@@ -140,7 +140,6 @@ class NewCustomerData extends Component {
 
 const mapStateToProps = state => {
   return {};
-  //not sure that I need to know additional state outside of what's already in this component
 };
 
 const mapDispatchToProps = dispatch => {

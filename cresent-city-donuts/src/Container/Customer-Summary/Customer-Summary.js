@@ -16,6 +16,7 @@ class CustomerSummary extends Component {
     };
   }
 
+  //Geocodio API for lat and lng to give to Google Maps
   componentWillMount() {
     var address = `${this.props.street}, ${this.props.city} ${
         this.props.state
@@ -34,8 +35,6 @@ class CustomerSummary extends Component {
   }
 
   render() {
-    console.log("hi");
-    console.log(this.props);
     let showMap = null;
     if (this.state.gotGeo) {
       showMap = (

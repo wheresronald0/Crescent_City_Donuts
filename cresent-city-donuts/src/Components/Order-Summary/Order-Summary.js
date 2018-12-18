@@ -29,7 +29,9 @@ class OrderSummary extends Component {
   };
 
   render() {
-    const totalCost = this.props.individualCounter * 1.5;
+    const cost = +(this.props.individualCounter * 1.5).toFixed(2);
+    const tax = +(cost * 0.05).toFixed(2);
+    const totalCost = +(cost + tax).toFixed(2);
     let displayAlert = null;
     if (this.state.alert) {
       displayAlert = (
@@ -51,21 +53,21 @@ class OrderSummary extends Component {
             {displayAlert}
             <Modal.Title>
               <strong>
-                {this.props.firstName}&nbsp;{this.props.lastName}
+                Order for {this.props.firstName}&nbsp;{this.props.lastName}
               </strong>
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <h4>Customer Address</h4>
+            <h4>Customer Address:</h4>
             <div>
-              {this.props.street}
-              {this.props.city}
-              {this.props.state}
+              {this.props.street}, &nbsp;
+              {this.props.city}, &nbsp;
+              {this.props.state}&nbsp;
               {this.props.zip}
-              {this.props.email}
             </div>
             <hr />
             <ItemCount
+              totalCount={this.props.totalCount}
               sugarGlazedCount={this.props.sugarGlazedCount}
               chocolateCount={this.props.chocolateCount}
               blueberryCount={this.props.blueberryCount}
@@ -74,7 +76,9 @@ class OrderSummary extends Component {
               individualCounter={this.props.individualCounter}
             />
             <h4>
-              <strong>Total Cost ${totalCost} </strong>
+              <p>Cost $ {cost} </p>
+              <p>Tax $ {tax} </p>
+              <strong>Total Cost $ {totalCost} </strong>
             </h4>
           </Modal.Body>
           <Modal.Footer>
