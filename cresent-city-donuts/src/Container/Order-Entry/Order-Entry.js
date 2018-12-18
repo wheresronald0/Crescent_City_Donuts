@@ -15,12 +15,11 @@ import BlueberryDonut from "../../Components/Donut/Blueberry-Donut";
 import StrawberryDonut from "../../Components/Donut/Strawberry-Donut";
 import ConfettiDonut from "../../Components/Donut/Confetti-Donut";
 import DonutPlaceholder from "../../Components/Donut-Placeholder/Donut-Placeholder";
-import CounterOutput from "../../Components/Counter-Output/Counter-Output";
 import OrderSummary from "../../Components/Order-Summary/Order-Summary";
 
 import "./Order-Entry.css";
 import { Button } from "react-bootstrap";
-import backgroundDonuts from "../../Assests/background4.jpg";
+
 
 class OrderEntry extends Component {
   render() {

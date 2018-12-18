@@ -41,10 +41,11 @@ class CustomerDataSearch extends Component {
 
   render() {
     const searchResults = this.state.responseData;
+    console.log(searchResults);
     const eachResult = searchResults.map(customers => {
       return (
-        <div>
-          <div key={customers._id} className="mappedSearchResults">
+        <div key={customers._id}>
+          <div className="mappedSearchResults">
             <strong>Customer Name: &nbsp;</strong>
             {customers.firstName}&nbsp;
             {customers.lastName}&nbsp; | <strong>Address: &nbsp;</strong>

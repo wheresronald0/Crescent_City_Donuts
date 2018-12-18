@@ -3,6 +3,8 @@ import * as actions from "../../store/actions";
 import { NavLink, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import axios from "axios";
+import "../Customer-Update/Customer-Update.css";
+import backgroundLight from "../../Assests/background3.jpg";
 import {
   Form,
   FormGroup,
@@ -14,9 +16,7 @@ import {
 class CustomerUpdate extends Component {
   constructor(props, context) {
     super(props, context);
-    this.state = {
-      redirect: false
-    };
+    this.state = {};
   }
 
   componentDidMount() {
@@ -28,8 +28,11 @@ class CustomerUpdate extends Component {
       state: this.props.state,
       zip: this.props.zip,
       email: this.props.email,
-      id: this.props.id
+      _id: this.props.id,
+      updateRedirect: false,
+      deleteRedirect: false
     });
+    console.log(this.state);
   }
   componentWillUnmount() {
     const customers = this.state;
@@ -39,7 +42,7 @@ class CustomerUpdate extends Component {
   customerUpdateHandler = () => {
     const data = this.state;
     axios
-      .put("http://localhost:4000/customer/" + this.props.id, data)
+      .put("http://localhost:4000/customer/" + this.state.id, data)
       .then(response => {
         console.log(response);
         this.updateRedirect();
@@ -51,17 +54,25 @@ class CustomerUpdate extends Component {
       .delete("http://localhost:4000/customer/" + this.props.id)
       .then(response => {
         console.log(response);
-        this.updateRedirect();
+        this.deleteRedirect();
       });
   };
 
   updateRedirect = () => {
-    this.setState({ redirect: true });
+    this.setState({ updateRedirect: true });
+  };
+  deleteRedirect = () => {
+    this.setState({ deleteRedirect: true });
   };
 
   renderOnUpdateRedirect = () => {
-    if (this.state.redirect) {
-      return <Redirect to="/customer/:id" />;
+    if (this.state.updateRedirect) {
+      return <Redirect to={"/customer/" + this.props.id} />;
+    }
+  };
+  renderOnDeleteRedirect = () => {
+    if (this.state.deleteRedirect) {
+      return <Redirect to="/customer" />;
     }
   };
 
@@ -73,10 +84,21 @@ class CustomerUpdate extends Component {
   };
 
   render() {
+    console.log(this.state);
     return (
-      <div>
-        <h3>Edit Customer</h3>
+      <div
+        className="newCustomerFormContainer"
+        style={{
+          backgroundImage: "url(" + backgroundLight + ")",
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat"
+        }}
+      >
         <Form className="newCustomerForm">
+          <h3>
+            <strong>Edit Customer </strong>
+          </h3>
           <FormGroup>
             <ControlLabel>First Name</ControlLabel>
             <FormControl
@@ -147,17 +169,23 @@ class CustomerUpdate extends Component {
               value={this.state.email}
             />
           </FormGroup>
+          <Button bsStyle="warning" onClick={this.customerUpdateHandler}>
+            Save Changes
+          </Button>
+          <Button
+            bsStyle="danger"
+            id="deleteCustomerBtn"
+            onClick={this.customerDeleteHandler}
+          >
+            Delete Customer
+          </Button>
+          <NavLink to={"/customer"}>
+            <Button bsStyle="warning">Back</Button>
+          </NavLink>
         </Form>
-        <Button bsStyle="warning" onClick={this.customerUpdateHandler}>
-          Save Changes
-        </Button>
-        <Button bsStyle="danger" onClick={this.customerDeleteHandler}>
-          Delete Customer
-        </Button>
-        <NavLink to={"/customer"}>
-          <Button bsStyle="warning">Back</Button>
-        </NavLink>
+
         {this.renderOnUpdateRedirect()}
+        {this.renderOnDeleteRedirect()}
       </div>
     );
   }

@@ -54,7 +54,6 @@ class NewCustomerData extends Component {
           backgroundPosition: "center",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat"
-          // opacity: "0.5"
         }}
       >
         <Form className="newCustomerForm">
@@ -121,7 +120,11 @@ class NewCustomerData extends Component {
               onChange={event => this.setState({ email: event.target.value })}
             />
           </FormGroup>
-          <Button bsStyle="warning" onClick={this.customerDataHandler}>
+          <Button
+            bsStyle="warning"
+            id="saveCustomerBtn"
+            onClick={this.customerDataHandler}
+          >
             Save Customer
           </Button>
           <NavLink to={"/order"}>

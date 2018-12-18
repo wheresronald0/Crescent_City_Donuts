@@ -34,6 +34,8 @@ class CustomerSummary extends Component {
   }
 
   render() {
+    console.log("hi");
+    console.log(this.props);
     let showMap = null;
     if (this.state.gotGeo) {
       showMap = (
@@ -45,11 +47,13 @@ class CustomerSummary extends Component {
 
     return (
       <Table responsive id="customerSummaryContainer">
-        <tr>
-          <th>
-            <h3>Customer Summary</h3>
-          </th>
-        </tr>
+        <tbody>
+          <tr>
+            <th>
+              <h3>Customer Summary</h3>
+            </th>
+          </tr>
+        </tbody>
 
         <tbody>
           <tr>
