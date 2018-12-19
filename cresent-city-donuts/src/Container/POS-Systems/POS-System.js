@@ -25,6 +25,7 @@ class POSSystem extends Component {
             <Route path="/customer/:id" component={CustomerSummary} />
             <Route path="/customer" component={CustomerDataSearch} />
             <Route path="/order" component={NewOrder} />
+            <Route path="/" component={NewOrder} />
           </Switch>
         </div>
       </div>
