@@ -18,7 +18,8 @@ class CustomerDataSearch extends Component {
     super(props);
     this.state = {
       searchParameter: "",
-      responseData: []
+      responseData: [],
+      isLoaded: false
     };
   }
 
@@ -31,39 +32,49 @@ class CustomerDataSearch extends Component {
       // axios.get("http://localhost:4000/customer/" + data)
       .then(response => {
         if (response) {
-          this.setState({ responseData: response.data });
+          this.setState({ responseData: response.data, isLoaded: true });
         }
       });
   };
 
   render() {
-    const searchResults = this.state.responseData;
-    const eachResult = searchResults.map(customers => {
-      return (
-        <div key={customers._id}>
-          <div className="mappedSearchResults">
-            <strong>Customer Name: &nbsp;</strong>
-            {customers.firstName}&nbsp;
-            {customers.lastName}&nbsp; | <strong>Address: &nbsp;</strong>
-            {customers.street}&nbsp;
-            {customers.city},&nbsp;
-            {customers.state}&nbsp;
-            {customers.zip}&nbsp; | &nbsp; <strong>Email: &nbsp;</strong>{" "}
-            {customers.email}&nbsp;
-            <div>
-              <NavLink to={"/customer/" + customers._id}>
-                <Button
-                  bsStyle="info"
-                  onClick={event => this.props.onCustomerSelect(customers)}
-                >
-                  Select Customer
-                </Button>
-              </NavLink>
+    let eachResult = null;
+    if (this.state.isLoaded) {
+      const searchResults = this.state.responseData;
+      eachResult = searchResults.map(customers => {
+        return (
+          <div key={customers._id}>
+            <div className="mappedSearchResults">
+              <strong>Customer Name: &nbsp;</strong>
+              {customers.firstName}&nbsp;
+              {customers.lastName}&nbsp; | <strong>Address: &nbsp;</strong>
+              {customers.street}&nbsp;
+              {customers.city},&nbsp;
+              {customers.state}&nbsp;
+              {customers.zip}&nbsp; | &nbsp; <strong>Email: &nbsp;</strong>{" "}
+              {customers.email}&nbsp;
+              <div>
+                <NavLink to={"/customer/" + customers._id}>
+                  <Button
+                    bsStyle="info"
+                    onClick={event => this.props.onCustomerSelect(customers)}
+                  >
+                    Select Customer
+                  </Button>
+                </NavLink>
+              </div>
             </div>
           </div>
+        );
+      });
+    } else {
+      return (
+        <div class="spinner">
+          <div class="dot1" />
+          <div class="dot2" />
         </div>
       );
-    });
+    }
 
     return (
       <div
