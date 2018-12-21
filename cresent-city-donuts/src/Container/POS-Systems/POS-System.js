@@ -16,7 +16,7 @@ class POSSystem extends Component {
         <header>
           <NavBar />
         </header>
-        <div>
+        <div id="POS Container">
           <Switch>
             <Route path="/order-summary" component={OrderSummary} />
             <Route path="/customer/new" component={NewCustomerData} />
