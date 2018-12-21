@@ -32,12 +32,12 @@ class CustomerDataSearch extends Component {
     const data = this.state.searchParameter;
     axios
       .get(
-        "https://crescent-city-donuts-backend.herokuapp.com/customer/$delay=5" +
-          data
+        "https://crescent-city-donuts-backend.herokuapp.com/customer/" + data
       )
       // axios.get("http://localhost:4000/customer/" + data)
       .then(response => {
         if (response) {
+          console.log(response);
           this.setState({
             responseData: response.data,
             isLoaded: true,
@@ -57,26 +57,119 @@ class CustomerDataSearch extends Component {
     let gotTheData = null;
 
     if (this.state.isLoaded) {
-      gotTheData = this.state.responseData.map(res => {
-        return <div key={res._id}>{res.firstName}</div>;
+      gotTheData = this.state.responseData.map(customers => {
+        return (
+          <div key={customers._id}>
+            <div className="mappedSearchResults">
+              <div>
+                <strong>Customer Name: &nbsp;</strong>
+                {customers.firstName}&nbsp;
+                {customers.lastName}&nbsp; | <strong>Address: &nbsp;</strong>
+                {customers.street}&nbsp;
+                {customers.city},&nbsp;
+                {customers.state}&nbsp;
+                {customers.zip}&nbsp; | &nbsp; <strong>Email: &nbsp;</strong>{" "}
+                {customers.email}&nbsp;
+              </div>
+
+              <div>
+                <NavLink to={"/customer/" + customers._id}>
+                  <Button
+                    bsStyle="info"
+                    onClick={event => this.props.onCustomerSelect(customers)}
+                  >
+                    Select Customer
+                  </Button>
+                </NavLink>
+              </div>
+            </div>
+          </div>
+        );
       });
     }
     if (this.state.loader) {
       return (
-        <div className="spinner">
-          <div className="dot1" />
-          <div className="dot2" />
+        <div
+          className="searchFormContainer"
+          style={{
+            backgroundImage: "url(" + backgroundLight + ")",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat"
+          }}
+        >
+          <div>
+            <Form inline className="customerLookupForm">
+              <FormGroup controlId="formInlineName">
+                <ControlLabel id="searchTitle">
+                  Lookup Customer by First Name, Last Name, or Email{" "}
+                </ControlLabel>
+                <FormControl
+                  type="text"
+                  placeholder="Jane Doe"
+                  onChange={event =>
+                    this.setState({ searchParameter: event.target.value })
+                  }
+                />
+              </FormGroup>
+              <Button bsStyle="warning" onClick={this.loadingLoader}>
+                Search for Customer
+              </Button>
+              <NavLink to={"customer/new"}>
+                <Button bsStyle="warning">Enter New Customer</Button>
+              </NavLink>
+              <NavLink to={"/order"}>
+                <Button bsStyle="warning">Back</Button>
+              </NavLink>
+            </Form>
+          </div>
+          <div className="spinner">
+            <div className="dot1" />
+            <div className="dot2" />
+          </div>
         </div>
       );
     }
 
     return (
-      <div>
+      <div
+        className="searchFormContainer"
+        style={{
+          backgroundImage: "url(" + backgroundLight + ")",
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat"
+        }}
+      >
         <div>
-          <Button onClick={this.loadingLoader}>click me</Button>
+          <Form inline className="customerLookupForm">
+            <FormGroup controlId="formInlineName">
+              <ControlLabel id="searchTitle">
+                Lookup Customer by First Name, Last Name, or Email{" "}
+              </ControlLabel>
+              <FormControl
+                type="text"
+                placeholder="Jane Doe"
+                onChange={event =>
+                  this.setState({ searchParameter: event.target.value })
+                }
+              />
+            </FormGroup>
+            <Button bsStyle="warning" onClick={this.loadingLoader}>
+              Search for Customer
+            </Button>
+            <NavLink to={"customer/new"}>
+              <Button bsStyle="warning">Enter New Customer</Button>
+            </NavLink>
+            <NavLink to={"/order"}>
+              <Button bsStyle="warning">Back</Button>
+            </NavLink>
+          </Form>
         </div>
 
-        <div>{gotTheData}</div>
+        <div className="seachContainer">
+          <ul>{gotTheData}</ul>
+        </div>
       </div>
     );
   }
@@ -98,113 +191,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(CustomerDataSearch);
-
-// class CustomerDataSearch extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       searchParameter: "",
-//       responseData: [],
-//       isLoaded: false
-//     };
-//   }
-
-//   customerSearchHandler = () => {
-//     const data = this.state.searchParameter;
-//     axios
-//       .get(
-//         "https://crescent-city-donuts-backend.herokuapp.com/customer/" + data
-//       )
-//       // axios.get("http://localhost:4000/customer/" + data)
-//       .then(response => {
-//         if (response) {
-//           this.setState({ responseData: response.data });
-//         }
-//       });
-//   };
-
-//   render() {
-//     let eachResult = null;
-//     if (this.state.isLoaded) {
-//       return (
-//         <div class="spinner">
-//           <div class="dot1" />
-//           <div class="dot2" />
-//         </div>
-//       );
-//     } else {
-//       const searchResults = this.state.responseData;
-//       eachResult = searchResults.map(customers => {
-//         return (
-//           <div key={customers._id}>
-//             <div className="mappedSearchResults">
-//               <div>
-//                 <strong>Customer Name: &nbsp;</strong>
-//                 {customers.firstName}&nbsp;
-//                 {customers.lastName}&nbsp; | <strong>Address: &nbsp;</strong>
-//                 {customers.street}&nbsp;
-//                 {customers.city},&nbsp;
-//                 {customers.state}&nbsp;
-//                 {customers.zip}&nbsp; | &nbsp; <strong>Email: &nbsp;</strong>{" "}
-//                 {customers.email}&nbsp;
-//               </div>
-
-//               <div>
-//                 <NavLink to={"/customer/" + customers._id}>
-//                   <Button
-//                     bsStyle="info"
-//                     onClick={event => this.props.onCustomerSelect(customers)}
-//                   >
-//                     Select Customer
-//                   </Button>
-//                 </NavLink>
-//               </div>
-//             </div>
-//           </div>
-//         );
-//       });
-//     }
-
-//     return (
-//       <div
-//         className="searchFormContainer"
-//         style={{
-//           backgroundImage: "url(" + backgroundLight + ")",
-//           backgroundPosition: "center",
-//           backgroundSize: "cover",
-//           backgroundRepeat: "no-repeat"
-//         }}
-//       >
-//         <div>
-//           <Form inline className="customerLookupForm">
-//             <FormGroup controlId="formInlineName">
-//               <ControlLabel id="searchTitle">
-//                 Lookup Customer by First Name, Last Name, or Email{" "}
-//               </ControlLabel>
-//               <FormControl
-//                 type="text"
-//                 placeholder="Jane Doe"
-//                 onChange={event =>
-//                   this.setState({ searchParameter: event.target.value })
-//                 }
-//               />
-//             </FormGroup>
-//             <Button bsStyle="warning" onClick={this.customerSearchHandler}>
-//               Search for Customer
-//             </Button>
-//             <NavLink to={"customer/new"}>
-//               <Button bsStyle="warning">Enter New Customer</Button>
-//             </NavLink>
-//             <NavLink to={"/order"}>
-//               <Button bsStyle="warning">Back</Button>
-//             </NavLink>
-//           </Form>
-//         </div>
-
-//         <div className="seachContainer">
-//           <ul>{eachResult}</ul>
-//         </div>
-//       </div>
-//     );
-//   }
-// }
