@@ -32,7 +32,8 @@ class CustomerDataSearch extends Component {
     const data = this.state.searchParameter;
     axios
       .get(
-        "https://crescent-city-donuts-backend.herokuapp.com/customer/" + data
+        "https://crescent-city-donuts-backend.herokuapp.com/customer/$delay=5" +
+          data
       )
       // axios.get("http://localhost:4000/customer/" + data)
       .then(response => {
