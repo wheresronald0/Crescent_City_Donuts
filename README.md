@@ -6,14 +6,14 @@ Description:
 Crescent City Donuts is a ficticious New Orleans staple serving amazing fried confections since 1967. Located in the Garden District, and serving the local community, Crescent City Donuts is a Big Easy tradition.
 
 Brief Example
-![alt text]
-( "Screenshot for Application")
+![alt text](https://github.com/wheresronald0/Crescent_City_Donuts/blob/master/index_view.png "Screenshot for Application")
+insert backend repo?
 
-What your project is / should be used for
+What your project is / should be used for:
+This is a Point-of-Sale (POS) system with basic Customer Relationship Management (CRM) capabilities. The application is geared for a small propriotor of donuts/confections. It helps track order fullfillment and customer information
+
 What problem(s) your projects solves
-Brief Example
-This could be a code snippet showing how your project should be used (if it is meant to be integrated into another app)
-This could be a screenshot of your project running in the browser (if it is a stand-alone application)
+
 List of Features / User Stories
 This typically will be a short list of the features / user stories that you planned during the development phase of the project
 To provide more detail, you can show how you categorized these features into Bronze (MVP), Silver, and Gold Levels and indicate which features you complete / have yet to complete
