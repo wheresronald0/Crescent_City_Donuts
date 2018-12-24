@@ -7,26 +7,63 @@ Crescent City Donuts is a ficticious New Orleans staple serving amazing fried co
 
 Brief Example
 ![alt text](https://github.com/wheresronald0/Crescent_City_Donuts/blob/master/index_view.png "Screenshot for Application")
-insert backend repo?
 
-What your project is / should be used for:
-This is a Point-of-Sale (POS) system with basic Customer Relationship Management (CRM) capabilities. The application is geared for a small propriotor of donuts/confections. It helps track order fullfillment and customer information
+This project is / should be used for:
+This is a Point-of-Sale (POS) system with basic Customer Relationship Management (CRM) capabilities. The application is geared for a small propriotor of donuts/confections. It helps track order fullfillment, through to payment, and customer information tracking
 
-What problem(s) your projects solves
+User Stories:
+User is a business user
+User utilizes the point of sale (POS) system to fulfill customer donut orders
+User selects amount of donut and donut type
+User sees donut count per type, and visual representation of unfulfilled order, similar to a physical customer-facing order fulfillment experience beginning with an empty box/order count
 
-List of Features / User Stories
-This typically will be a short list of the features / user stories that you planned during the development phase of the project
-To provide more detail, you can show how you categorized these features into Bronze (MVP), Silver, and Gold Levels and indicate which features you complete / have yet to complete
-List of Technologies Used
-Often you will want to list the technologies you used to create the project.
-This typically would consist of all primary languages, frameworks, and libraries your app is composed of
-This is particularly important when it comes to recruiters scanning your projects for keywords
-Installation Instructions / Getting Started
-This section should walk a reader, step by step, through the process of setting up your project
-For a tool meant to be integrated into other projects, this would likely outline the process of installing and accessing this tool in your project
-For an application, this would likely outline the process of forking, cloning, and starting the app locally
-Contribution Guidelines
-This section should offer guidance on where and how users can contribute to your code, identify bugs, and propose improvements
-Good links to include are:
-A link to the project's main repository
-A link to the project's issue tracker
+Pseudocode - Features (MVP/Bronze):
+#Index
+Three buttons- “look-up”, “enter new customer data”, and “order now” to prepare the order
+#Customer Data Search
+Search bar to search for a customer name in the db (first and last?)
+Results will be displayed in list elements directly below
+User will be able to click on customer data to load
+Once data is clicked, order page is displayed with customer name at the top
+#New Customer Data
+Form to complete basic customer information (name and address)
+Once for is filled out, order page is displayed with customer name at the top
+#Order page
+Buttons displaying total number of donuts to be ordered in increments of one dozen, half dozen, and single
+Thumbnails of donuts with plus and minus increment counters for each
+Once order amount is clicked, A top view is displayed of shadowed/grey donuts to indicate amount to be fulfilled
+As each donut is added to order, said donut will replace greyed out placeholder
+A counter will be displayed to tally each of the flavors of donuts ordered
+A total counter is displayed
+Once order count is completed, a button is displayed to view order in a modal
+#Order Summary
+Modal displays order total, cost, and a complete order button, that when pressed will take you back to customer lookup page OR a completed order status page
+
+Advanced Features (Silver/Gold):
+total based on discount is dozen ordered, or new customer coupon applied
+Customer Data Search with multiple data imputs to search on (email, etc.) - completed
+Store order with customer data- not completed
+Display order history with querying customer- not completed
+Total cost- completed
+Tax- completed
+Employee login- not completed
+Addidional products- not completed
+Paypal payment integration- not completed
+
+List of Technologies Used:
+HTML, CSS, React-Bootstrap, JavaScript, React, Redux, Node.js, Express, Mongoose,MongoDB
+
+Installation Instructions / Getting Started:
+This project was bootstrapped with Create React App. Please visit this link for instruction on running this application https://github.com/wheresronald0/Crescent_City_Donuts/blob/master/cresent-city-donuts/README.md
+
+Contribution Guidelines:
+If you'd like to contibute to this project, please checkout a branch
+
+A link to the project's main repository:
+https://github.com/wheresronald0/Crescent_City_Donuts
+
+A link to the project's Node.js/MongoDB repository:
+https://github.com/wheresronald0/Crescent_City_Donuts_MongoDb_Backend
+
+A link to the project's issue tracker:
+https://github.com/wheresronald0/Crescent_City_Donuts/issues
