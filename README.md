@@ -10,6 +10,8 @@ Crescent City Donuts is a factitious New Orleans staple serving amazing fried co
 
 ## This project is / should be used for
 
+This web application was created to practice Redux in React
+
 This is a Point-of-Sale (POS) system with basic Customer Relationship Management (CRM) capabilities. The application is geared for a small proprietor of donuts/confections. It helps track order fulfillment, through to payment, and customer information tracking
 
 ## User Stories
