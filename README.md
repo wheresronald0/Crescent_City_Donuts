@@ -1,10 +1,8 @@
-# README
-
-## Cresecent City Donuts
+# Cresecent City Donuts
 
 ## Description
 
-- Crescent City Donuts is a factitious New Orleans staple serving amazing fried confections since 1967. Located in the Garden District, and serving the local community, Crescent City Donuts is a Big Easy tradition.
+Crescent City Donuts is a factitious New Orleans staple serving amazing fried confections since 1967. Located in the Garden District, and serving the local community, Crescent City Donuts is a Big Easy tradition.
 
 ## Brief Example
 
@@ -12,7 +10,7 @@
 
 ## This project is / should be used for
 
-- This is a Point-of-Sale (POS) system with basic Customer Relationship Management (CRM) capabilities. The application is geared for a small proprietor of donuts/confections. It helps track order fulfillment, through to payment, and customer information tracking
+This is a Point-of-Sale (POS) system with basic Customer Relationship Management (CRM) capabilities. The application is geared for a small proprietor of donuts/confections. It helps track order fulfillment, through to payment, and customer information tracking
 
 ## User Stories
 
@@ -80,11 +78,11 @@
 
 ## Installation Instructions / Getting Started
 
-- This project was bootstrapped with Create React App. Please visit this link for instruction on running this application (https://github.com/wheresronald0/Crescent_City_Donuts/blob/master/cresent-city-donuts/README.md)
+This project was bootstrapped with Create React App. Please visit this link for instruction on running this application (https://github.com/wheresronald0/Crescent_City_Donuts/blob/master/cresent-city-donuts/README.md)
 
 ## Contribution Guidelines
 
-- If you'd like to contribute to this project, please checkout a branch
+if you'd like to contribute to this project, please checkout a branch
 
 ## Project's main repository
 
