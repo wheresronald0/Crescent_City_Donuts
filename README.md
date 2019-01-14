@@ -84,7 +84,7 @@ This project was bootstrapped with Create React App. Please visit this link for 
 
 ## Contribution Guidelines
 
-if you'd like to contribute to this project, please checkout a branch
+If you'd like to contribute to this project, please checkout a branch
 
 ## Project's main repository
 
