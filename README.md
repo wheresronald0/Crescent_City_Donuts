@@ -14,6 +14,8 @@ This web application was created to practice Redux in React
 
 This is a Point-of-Sale (POS) system with basic Customer Relationship Management (CRM) capabilities. The application is geared for a small proprietor of donuts/confections. It helps track order fulfillment, through to payment, and customer information tracking
 
+Project is not mobile-first/responsive as it's meant to be viewed on a large stationary POS display
+
 ## User Stories
 
 - User is a business user
